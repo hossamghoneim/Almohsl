@@ -27,7 +27,7 @@ Route::group(['middleware' => ['cors', 'json.response']], function () {
         Route::get('/current', function (Request $request) {
             return auth()->user();
         });
-        //Route::post('logout', 'Auth\AuthController@logout');
+        Route::post('logout', 'Auth\AuthController@logout');
         //Route::post('/users/update-info','ProfileController@updateInfo');
         //Route::post('/users/update-password','ProfileController@updatePassword');
     });

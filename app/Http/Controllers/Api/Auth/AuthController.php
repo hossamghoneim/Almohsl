@@ -28,4 +28,12 @@ class AuthController extends Controller
             return $this->validationFailure(["password" => [__("Password mismatch")]]);
         }
     }
+
+    public function logout(Request $request)
+    {
+        $token = $request->user()->token();
+        $token->revoke();
+
+        return $this->success('You have been successfully logged out!');
+    }
 }
