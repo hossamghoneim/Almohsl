@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="canonical" href="https://preview.keenthemes.com/metronic8" />
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <link rel="icon" href="#" type="image/gif" sizes="16x16">
+    <link rel="shortcut icon" href="{{asset('placeholder_images/logo.jpeg')}}" />
 
     <!--begin::Fonts-->
 

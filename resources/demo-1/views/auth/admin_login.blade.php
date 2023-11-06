@@ -42,10 +42,10 @@
             <!--begin::Content-->
             <div class="d-flex flex-column flex-center pb-0 pb-lg-10 p-10 w-100">
                 <!--begin::Image-->
-                <img class="theme-light-show mx-auto mw-100 w-150px w-lg-300px mb-10 mb-lg-20" src="{{ asset('dashboard-assets/demo-1/media/auth/agency.png') }}" alt="" />
+                <img class="theme-light-show mx-auto mw-100 w-150px w-lg-350px mb-10 mb-lg-20" src="{{ asset('placeholder_images/logo_transparent.png') }}" alt="" />
                 <!--end::Image-->
                 <!--begin::Title-->
-                <h1 class="text-gray-800 fs-2qx fw-bold text-center mb-7">{{ __('Fast, Efficient and Productive') }}</h1>
+                <h1 class="text-gray-800 fs-2qx fw-bold text-center mb-9">{{ __('Almohsl : Fast, Efficient and Productive') }}</h1>
                 <!--end::Title-->
             </div>
             <!--end::Content-->
@@ -122,9 +122,9 @@
                     <div class="d-flex flex-center flex-column-auto p-10">
                         <!--begin::Links-->
                         <div class="d-flex align-items-center fw-bold fs-6">
-                            <a href="https://www.linkedin.com/in/hossam-ghoneim-794b061b7/" target="_blank" class="text-muted text-hover-primary px-2">
-                                {{ __('Developed By') }}  <img class="mx-4" src="https://www.linkedin.com/in/hossam-ghoneim-794b061b7/"  >
-                            </a>
+                            <span class="text-muted text-hover-primary px-2">
+                                {{ __('Developed By') }}  <img class="mx-4" style="width: 50px; height: 50px" src="{{ asset('placeholder_images/logo.jpeg') }}"  >
+                            </span>
                         </div>
                         <!--end::Links-->
                     </div>
