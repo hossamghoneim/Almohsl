@@ -64,6 +64,7 @@ class Kernel extends HttpKernel
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
         'set_locale' => \App\Http\Middleware\SetLocale::class,
         'json.response' => \App\Http\Middleware\ForceJsonResponse::class,
+        'cors' => \App\Http\Middleware\Cors::class,
         'update_admin_cache' => \App\Http\Middleware\UpdateAdminCache::class
     ];
 }
