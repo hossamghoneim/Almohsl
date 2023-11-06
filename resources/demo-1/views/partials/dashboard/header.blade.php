@@ -135,65 +135,11 @@
                 </div>
                 <!--end:: System Theme-->
 
-                <!--begin::Notifications-->
-                <div class="d-flex align-items-center ms-1 ms-lg-3">
-                    <!--begin::Menu- wrapper-->
-                    <div class="btn btn-icon btn-icon-muted btn-active-light btn-active-color-primary w-30px h-30px w-md-40px h-md-40px" data-kt-menu-trigger="click" data-kt-menu-attach="parent" data-kt-menu-placement="bottom-end">
-                        <!--begin::Svg Icon | path: icons/duotune/general/gen022.svg-->
-                        <a href="javascript:" class="btn btn-icon btn-light pulse pulse-primary">
-                            <i class="bi bi-bell-fill fs-1"></i>
-                            <span class="pulse-ring border-2"></span>
-                        </a>
-                        <!--end::Svg Icon-->
-                    </div>
-                    <!--begin::Menu-->
-                    <div class="menu menu-sub menu-sub-dropdown menu-column w-350px w-lg-375px" data-kt-menu="true">
-                        <!--begin::Heading-->
-                        <div class="d-flex flex-column bgi-no-repeat rounded-top" style="background-image:url('{{ asset('dashboard-assets/demo-1/media/misc/pattern-1.jpg') }}')">
-                            <!--begin::Title-->
-                            <h3 class="text-white text-center fw-bold px-9 mt-10 mb-6 py-4">{{ __("Notifications") }}</h3>
-                            <!--end::Title-->
-                        </div>
-                        <!--end::Heading-->
-                        <!--begin::Tab content-->
-                        <div class="tab-content">
-                        <div class="tab-pane fade show active"  role="tabpanel">
-                                <!--begin::Wrapper-->
-                                <div class="d-flex flex-column px-9">
-                                    <!--begin::Section-->
-                                    <div class="pt-10 pb-0">
-
-                                        <!--begin::Title-->
-                                        <h3 class="text-dark text-center fw-bolder">{{ __("No notifications") }}</h3>
-                                        <!--end::Title-->
-
-                                        <!--begin::Text-->
-                                        <div class="text-center text-gray-600 fw-bold pt-1">{{ __("You'll see your notifications here once they come") }}</div>
-                                        <!--end::Text-->
-
-                                    </div>
-                                    <!--end::Section-->
-                                    <!--begin::Illustration-->
-                                    <div class="text-center px-4">
-                                        <img class="mw-100 mh-200px" alt="image" src="{{ asset('dashboard-assets/demo-1/media/illustrations/sketchy-1/1.png') }}" />
-                                    </div>
-                                    <!--end::Illustration-->
-                                </div>
-                                <!--end::Wrapper-->
-                            </div>
-                        </div>
-                        <!--end::Tab content-->
-                    </div>
-                    <!--end::Menu-->
-                    <!--end::Menu wrapper-->
-                </div>
-                <!--end::Notifications-->
-
                 <!--begin::User menu-->
                 <div class="d-flex align-items-center ms-1 ms-lg-3" id="kt_header_user_menu_toggle">
                     <!--begin::Menu wrapper-->
                     <div class="cursor-pointer symbol symbol-30px symbol-md-40px rounded" data-kt-menu-trigger="click" data-kt-menu-attach="parent" data-kt-menu-placement="bottom-end">
-                        <img src="{{ getImagePathFromDirectory( auth()->user()->image, 'Admins') }}" alt="user" class="rounded-1" />
+                        <img src="{{ asset('placeholder_images/logo.jpeg') }}" alt="user" class="rounded-1" />
                     </div>
                     <!--begin::User account menu-->
                     <div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-800 menu-state-bg menu-state-primary fw-bold py-4 fs-6 w-275px" data-kt-menu="true">
@@ -202,7 +148,7 @@
                             <div class="menu-content d-flex align-items-center px-3">
                                 <!--begin::Avatar-->
                                 <div class="symbol symbol-50px me-5">
-                                    <img alt="Logo" src="{{ getImagePathFromDirectory( auth()->user()->image, 'Employees') }}" class="rounded-1"/>
+                                    <img alt="Logo" src="{{ asset('placeholder_images/logo.jpeg') }}" class="rounded-1"/>
                                 </div>
                                 <!--end::Avatar-->
                                 <!--begin::Username-->
@@ -248,11 +194,6 @@
                         </div>
                         <!--end::Menu item-->
                         <!--begin::Menu item-->
-                        <div class="menu-item px-5 my-1">
-                            <a href="{{ route('dashboard.edit-profile') }}" class="menu-link px-5">{{__("Account Settings")}}</a>
-                        </div>
-                        <!--end::Menu item-->
-                        <!--begin::Menu item-->
                         <div class="menu-item px-5">
                             <form id="logout-form" method="post" action="{{ route('admin.logout') }}">
                                 @csrf
@@ -263,17 +204,6 @@
                         <!--begin::Menu separator-->
                         <div class="separator my-2"></div>
                         <!--end::Menu separator-->
-                        <!--begin::Menu item-->
-                        <div class="menu-item px-5">
-                            <div class="menu-content px-5">
-                                <label class="form-check form-switch form-check-custom form-check-solid pulse pulse-success" for="toggle-notifications">
-                                    <input class="form-check-input w-30px h-20px" type="checkbox" value="1" name="mode" id="toggle-notifications"  />
-                                    <span class="pulse-ring ms-n1"></span>
-                                    <span class="form-check-label text-gray-600 fs-7">{{__("Notifications")}}</span>
-                                </label>
-                            </div>
-                        </div>
-                        <!--end::Menu item-->
                     </div>
                     <!--end::User account menu-->
                     <!--end::Menu wrapper-->

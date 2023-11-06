@@ -60,7 +60,7 @@ var KTDatatablesServerSide = function () {
                             <!--begin::Menu item-->
                             <div class="menu-item px-3">
                                 <a href="javascript:;" class="menu-link px-3" data-kt-docs-table-filter="edit_row">
-                                    ${__('تعديل')}
+                                    ${__('edit')}
                                 </a>
                             </div>
                             <!--end::Menu item-->
@@ -68,7 +68,7 @@ var KTDatatablesServerSide = function () {
                             ${data.id == 1 ? '' : `<!--begin::Menu item-->
                             <div class="menu-item px-3">
                                 <a href="#" class="menu-link px-3" data-kt-docs-table-filter="delete_row">
-                                    ${__('حذف')}
+                                    ${__('delete')}
                                 </a>
                             </div>
                             <!--end::Menu item-->`}
@@ -112,7 +112,7 @@ var KTDatatablesServerSide = function () {
 
                 $('#roles_inp').val('').trigger('change');
                 $('.image-input-wrapper').css('background-image', `url('${data.full_image_path}')`);
-                $("#form_title").text(__('تعديل بيانات الموظف'));
+                $("#form_title").text(__('edit admin'));
                 $("#name_inp").val(data.name);
                 $("#email_inp").val(data.email);
                 $("#phone_inp").val(data.phone);

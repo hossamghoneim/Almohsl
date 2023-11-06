@@ -9,7 +9,7 @@
         <div class="card-header border-0 cursor-pointer" role="button" data-bs-toggle="collapse" data-bs-target="#kt_account_profile_details" aria-expanded="true" aria-controls="kt_account_profile_details">
             <!--begin::Card title-->
             <div class="card-title m-0">
-                <h3 class="fw-bold m-0">{{ __('قائمة الموظفين') }}</h3>
+                <h3 class="fw-bold m-0">{{ __('Admins List') }}</h3>
             </div>
             <!--end::Card title-->
         </div>
@@ -28,7 +28,7 @@
                         </svg>
                     </span>
                     <!--end::Svg Icon-->
-                    <input type="text" data-kt-docs-table-filter="search" class="form-control form-control-solid w-250px ps-15" placeholder="{{ __('ابحث عن الموظفين') }}">
+                    <input type="text" data-kt-docs-table-filter="search" class="form-control form-control-solid w-250px ps-15" placeholder="{{ __('Search for admins') }}">
                 </div>
                 <!--end::Search-->
                 <!--begin::Toolbar-->
@@ -42,7 +42,7 @@
                             <rect x="4.36396" y="11.364" width="16" height="2" rx="1" fill="currentColor"></rect>
                         </svg>
                     </span>
-                        <!--end::Svg Icon-->{{ __('إضافة موظف') }}</button>
+                        <!--end::Svg Icon-->{{ __('add new admin') }}</button>
                     <!--end::Add customer-->
                 </div>
                 <!--end::Toolbar-->
@@ -65,10 +65,10 @@
                             <input class="form-check-input" type="checkbox" data-kt-check="true" data-kt-check-target="#kt_datatable .form-check-input" value="1"/>
                         </div>
                     </th>
-                    <th>{{ __('الأسم') }}</th>
-                    <th>{{ __('البريد الالكتروني') }}</th>
-                    <th>{{ __('تاريخ الإنشاء') }}</th>
-                    <th class=" min-w-100px">{{ __('الإجراءات') }}</th>
+                    <th>{{ __('Name') }}</th>
+                    <th>{{ __('Email') }}</th>
+                    <th>{{ __('date') }}</th>
+                    <th class=" min-w-100px">{{ __('actions') }}</th>
                 </tr>
                 </thead>
                 <tbody class="text-gray-600 fw-semibold">
@@ -87,7 +87,7 @@
             <div class="modal-dialog modal-dialog-scrollable">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="form_title">{{ __('إضافة موظف جديد') }}</h5>
+                        <h5 class="modal-title" id="form_title">{{ __('add new admin') }}</h5>
                         <!--begin::Close-->
                         <div class="btn btn-icon btn-sm btn-active-light-primary ms-2" data-bs-dismiss="modal" aria-label="Close">
                             <span class="svg-icon svg-icon-2x"></span>
@@ -97,34 +97,25 @@
 
                     <div class="modal-body">
                         <div class="fv-row mb-0 fv-plugins-icon-container">
-                            <label for="name_inp" class="form-label required fs-6 fw-bold mb-3">{{ __('الإسم') }}</label>
-                            <input type="text" name="name" class="form-control form-control-lg form-control-solid" id="name_inp" placeholder="{{ __('إسم الموظف') }}" >
+                            <label for="name_inp" class="form-label required fs-6 fw-bold mb-3">{{ __('Name') }}</label>
+                            <input type="text" name="name" class="form-control form-control-lg form-control-solid" id="name_inp" placeholder="{{ __('admin name') }}" >
                             <div class="fv-plugins-message-container invalid-feedback" id="name"></div>
                         </div>
                         <div class="fv-row mb-0 fv-plugins-icon-container">
-                            <label for="email_inp" class="form-label required fs-6 fw-bold mb-3">{{ __('البريد الإلكتروني') }}</label>
-                            <input type="text" name="email" autocomplete="new-password" class="form-control form-control-lg form-control-solid" id="email_inp" placeholder="{{ __('البريد الإلكتروني للموظف') }}" >
+                            <label for="email_inp" class="form-label required fs-6 fw-bold mb-3">{{ __('Email') }}</label>
+                            <input type="text" name="email" autocomplete="new-password" class="form-control form-control-lg form-control-solid" id="email_inp" placeholder="{{ __('admin email') }}" >
                             <div class="fv-plugins-message-container invalid-feedback" id="email"></div>
                         </div>
                         <div class="fv-row mb-0 fv-plugins-icon-container">
-                            <label for="phone_inp" class="form-label required fs-6 fw-bold mb-3">{{ __('رقم الهاتف') }}</label>
+                            <label for="phone_inp" class="form-label required fs-6 fw-bold mb-3">{{ __('Phone') }}</label>
                             <input type="text" name="phone" class="form-control form-control-lg form-control-solid" id="phone_inp" placeholder="05xxxxxxxx" >
                             <div class="fv-plugins-message-container invalid-feedback" id="phone"></div>
                         </div>
                         <div class="fv-row mb-0 fv-plugins-icon-container">
-                            <label for="roles_inp" class="form-label required fs-6 fw-bold mb-3">{{ __('الصلاحيات') }}</label>
-                            <select class="form-select form-select-solid" multiple="multiple" data-dir="rtl" name="roles[]" id="roles_inp" data-control="select2" data-placeholder="{{ __('اختر الصلاحيات') }}" data-allow-clear="true">
-                                @foreach( $roles as $role)
-                                    <option value="{{ $role->id }}"> {{ $role->name }} </option>
-                                @endforeach
-                            </select>
-                            <div class="fv-plugins-message-container invalid-feedback" id="roles"></div>
-                        </div>
-                        <div class="fv-row mb-0 fv-plugins-icon-container">
-                            <label for="password_inp" class="form-label fs-6 fw-bold mb-3">{{ __('كلمة المرور') }}</label>
+                            <label for="password_inp" class="form-label fs-6 fw-bold mb-3">{{ __('Password') }}</label>
                             <!--begin::Input wrapper-->
                             <div class="position-relative mb-3" data-kt-password-meter="true">
-                                <input class="form-control form-control-lg form-control-solid" type="password" name="password" autocomplete="new-password" id="password_inp" placeholder="{{ __('كلمة المرور') }}"  />
+                                <input class="form-control form-control-lg form-control-solid" type="password" name="password" autocomplete="new-password" id="password_inp" placeholder="{{ __('Password') }}"  />
                                 <!--begin::Visibility toggle-->
                                 <span class="btn btn-sm btn-icon position-absolute translate-middle top-50 end-0 me-n2"
                                       data-kt-password-meter-control="visibility">
@@ -138,10 +129,10 @@
                             <div class="fv-plugins-message-container invalid-feedback" id="password"></div>
                         </div>
                         <div class="fv-row mb-0 fv-plugins-icon-container">
-                            <label for="password_confirmation_inp" class="form-label fs-6 fw-bold mb-3">{{ __('تأكيد كلمة المرور') }}</label>
+                            <label for="password_confirmation_inp" class="form-label fs-6 fw-bold mb-3">{{ __('Password confirmation') }}</label>
                             <!--begin::Input wrapper-->
                             <div class="position-relative mb-3" data-kt-password-meter="true">
-                                <input class="form-control form-control-lg form-control-solid" type="password" name="password_confirmation" autocomplete="off" id="password_confirmation_inp" placeholder="{{ __('كلمة المرور') }}"  />
+                                <input class="form-control form-control-lg form-control-solid" type="password" name="password_confirmation" autocomplete="off" id="password_confirmation_inp" placeholder="{{ __('Password') }}"  />
                                 <!--begin::Visibility toggle-->
                                 <span class="btn btn-sm btn-icon position-absolute translate-middle top-50 end-0 me-n2"
                                       data-kt-password-meter-control="visibility">
@@ -157,13 +148,13 @@
                     </div>
 
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-light" data-bs-dismiss="modal">{{ __('اغلاق') }}</button>
+                        <button type="button" class="btn btn-light" data-bs-dismiss="modal">{{ __('Close') }}</button>
                         <button type="submit" class="btn btn-primary">
                             <span class="indicator-label">
-                                {{ __('حفظ البيانات') }}
+                                {{ __('Save') }}
                             </span>
                             <span class="indicator-progress">
-                                {{ __('يرجى الانتظار...') }} <span class="spinner-border spinner-border-sm align-middle ms-2"></span>
+                                {{ __('Please wait ...') }} <span class="spinner-border spinner-border-sm align-middle ms-2"></span>
                             </span>
                         </button>
                     </div>
@@ -185,7 +176,7 @@
             $("#add_btn").click(function (e) {
                 e.preventDefault();
 
-                $("#form_title").text(__('إضافة موظف جديد'));
+                $("#form_title").text(__('add new admin'));
                 $("[name='_method']").remove();
                 $("#crud_form").trigger('reset');
                 $("#crud_form").attr('action', `/dashboard/admins`);

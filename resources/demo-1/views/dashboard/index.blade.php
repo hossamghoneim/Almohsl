@@ -18,15 +18,6 @@
 
             </h1>
             <!--end::Page title-->
-            <!--begin::Actions-->
-            <div class="d-flex align-items-center gap-2 gap-lg-3">
-                <!--begin::Primary button-->
-                <a href="/" target="_blank" class="btn btn-sm btn-primary"><i class="bi bi-globe fs-6"></i> {{ __("website") }} </a>
-                <a href="#" target="_blank" class="btn btn-sm btn-success"><i class="bi bi-whatsapp fs-6"></i> {{ __("whatsapp") }} </a>
-                <a href="#" target="_blank" class="btn btn-sm btn-dark"><i class="bi bi-envelope-fill fs-6"></i> {{ __("mail") }} </a>
-                <!--end::Primary button-->
-            </div>
-            <!--end::Actions-->
         </div>
         <!--end::Container-->
     </div>

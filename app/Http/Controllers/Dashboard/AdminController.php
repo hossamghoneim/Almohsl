@@ -15,7 +15,7 @@ class AdminController extends Controller
 
     public function index(Request $request)
     {
-        $this->authorize('view_admins');
+        //$this->authorize('view_admins');
 
         if ($request->ajax()){
             $data = getModelData( model: new Admin(), andsFilters: [['email', '!=', 'support@test.com']], relations: ['roles' => ['id', 'name_ar', 'name_en']]);
@@ -29,7 +29,7 @@ class AdminController extends Controller
     public function create()
     {
 
-        $this->authorize('create_admins');
+        //$this->authorize('create_admins');
         $roles = Role::select('id','name_' . getLocale() )->get();
 
         return view('dashboard.admins.create',compact('roles'));
@@ -39,7 +39,7 @@ class AdminController extends Controller
     public function show(Admin $admin)
     {
 
-        $this->authorize('show_admins');
+        //$this->authorize('show_admins');
 
         $roles = Role::select('id','name_' . getLocale() )->get();
 
@@ -48,7 +48,7 @@ class AdminController extends Controller
 
     public function edit(Admin $admin)
     {
-        $this->authorize('update_admins');
+        //$this->authorize('update_admins');
 
         $roles = Role::select('id','name_' . getLocale() )->get();
 
@@ -61,9 +61,9 @@ class AdminController extends Controller
         $data['status'] = ( bool ) request('status');
         $admin       = Admin::create($data);
 
-        $rolesAndDefaultOne = array_merge( $request['roles'] , [ "2" ] );
+        //$rolesAndDefaultOne = array_merge( $request['roles'] , [ "2" ] );
 
-        $admin->roles()->attach( $rolesAndDefaultOne );
+        //$admin->roles()->attach( $rolesAndDefaultOne );
 
     }
 
@@ -76,15 +76,15 @@ class AdminController extends Controller
 
         $admin->update($data);
 
-        $rolesAndDefaultOne = array_merge( $request['roles'] , [ "2" ] );
+        //$rolesAndDefaultOne = array_merge( $request['roles'] , [ "2" ] );
 
-        $admin->roles()->sync( $rolesAndDefaultOne );
+        //$admin->roles()->sync( $rolesAndDefaultOne );
     }
 
 
     public function destroy(Request $request, Admin $admin)
     {
-        $this->authorize('delete_admins');
+        //$this->authorize('delete_admins');
 
         if($request->ajax())
         {
@@ -128,7 +128,7 @@ class AdminController extends Controller
 
     public function deleteSelected(Request $request)
     {
-        $this->authorize('delete_admins');
+        //$this->authorize('delete_admins');
         abort_if(in_array(1, $request->selected_items_ids), '404', "!لا يمكن حذف الحساب الرئيسى");
 
         Admin::whereIn('id', $request->selected_items_ids)->delete();
@@ -137,7 +137,7 @@ class AdminController extends Controller
 
     public function restoreSelected(Request $request)
     {
-        $this->authorize('delete_admins');
+        //$this->authorize('delete_admins');
         Admin::withTrashed()->whereIn('id', $request->selected_items_ids)->restore();
         return response(["selected admins restored successfully"]);
     }

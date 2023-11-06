@@ -2,8 +2,6 @@
     <!--begin::Brand-->
     <div class="aside-logo flex-column-auto" id="kt_aside_logo">
         <!--begin::Logo-->
-        <a href="{{ route('dashboard.index') }}">
-        </a>
         <!--end::Logo-->
         <!--begin::Aside toggler-->
         <div id="kt_aside_toggle" class="btn btn-icon w-auto px-0 btn-active-color-primary aside-toggle me-n2" data-kt-toggle="true" data-kt-toggle-state="active" data-kt-toggle-target="body" data-kt-toggle-name="aside-minimize">
@@ -17,6 +15,7 @@
             <!--end::Svg Icon-->
         </div>
         <!--end::Aside toggler-->
+       
     </div>
     <!--end::Brand-->
     <!--begin::Aside menu-->
@@ -25,80 +24,20 @@
             <!--begin::Menu-->
             <div class="menu menu-column menu-title-gray-800 menu-state-title-primary menu-state-icon-primary menu-state-bullet-primary menu-arrow-gray-500" id="#kt_aside_menu" data-kt-menu="true" data-kt-menu-expand="false">
 
-                <!-- begin :: cars section -->
                 <div class="menu-item mb-3">
                     <div class="menu-content pt-8 pb-0">
-                        <span class="menu-section text-muted text-uppercase fs-8 ls-1">{{ __("Example") }}</span>
+                        <span class="menu-section text-muted text-uppercase fs-8 ls-1">{{ __("Dashboard") }}</span>
                     </div>
                 </div>
-
-
 
                 <div class="menu-item">
-                    <a class="menu-link" href="{{ route('dashboard.index') }}"  data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-dismiss="click" data-bs-placement="right">
-                        <span class="menu-icon">
-                                <i class="fa fa-dot-circle"></i>
-                        </span>
-                        <span class="menu-title"> {{ __("Example") }}</span>
+                    <a class="menu-link {{ isTabActive('dashboard.admins*') }}" href="{{ route('dashboard.admins.index') }}"  data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-dismiss="click" data-bs-placement="right">
+                    <span class="menu-icon">
+                            <i class="fa fa-user-shield"></i>
+                    </span>
+                    <span class="menu-title"> {{ __("admins") }}</span>
                     </a>
                 </div>
-
-                <!-- end   :: cars section -->
-
-
-
-                @canany(['view_roles' , 'view_admins' , 'view_settings'])
-                    <div class="menu-item mb-3">
-                        <div class="menu-content pt-8 pb-0">
-                            <span class="menu-section text-muted text-uppercase fs-8 ls-1">{{ __("Settings") }}</span>
-                        </div>
-                    </div>
-                @endcanany
-
-                @can('view_roles')
-                    <div class="menu-item">
-                        <a class="menu-link {{ isTabActive('dashboard.roles*') }}" href="{{ route('dashboard.roles.index') }}"  data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-dismiss="click" data-bs-placement="right">
-                        <span class="menu-icon">
-                                <i class="fa fa-lock"></i>
-                        </span>
-                            <span class="menu-title"> {{ __("Roles") }}</span>
-                        </a>
-                    </div>
-                @endcan
-
-                @can('view_admins')
-                    <div class="menu-item">
-                        <a class="menu-link {{ isTabActive('dashboard.admins*') }}" href="{{ route('dashboard.admins.index') }}"  data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-dismiss="click" data-bs-placement="right">
-                        <span class="menu-icon">
-                                <i class="fa fa-user-shield"></i>
-                        </span>
-                        <span class="menu-title"> {{ __("admins") }}</span>
-                        </a>
-                    </div>
-                @endcan
-
-                @can('view_settings')
-                    <div class="menu-item">
-                        <a class="menu-link {{ isTabActive('dashboard.settings*') }}" href="{{ route('dashboard.settings.index') }}"  data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-dismiss="click" data-bs-placement="right">
-                        <span class="menu-icon">
-                                <i class="bi bi-gear-fill"></i>
-                        </span>
-                            <span class="menu-title"> {{ __("Settings") }}</span>
-                        </a>
-                    </div>
-                @endcan
-
-                @can('view_recycle_bin')
-                    <div class="menu-item">
-                        <a class="menu-link {{ isTabActive('dashboard.trash*') }}" href="{{ route('dashboard.trash') }}"  data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-dismiss="click" data-bs-placement="right">
-                        <span class="menu-icon">
-                                <i class="fas fa-trash"></i>
-                        </span>
-                            <span class="menu-title"> {{ __("Recycle Bin") }}</span>
-                        </a>
-                    </div>
-                @endcan
-
 
             </div>
             <!--end::Menu-->
