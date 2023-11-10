@@ -24,11 +24,13 @@ Route::group(['middleware' => ['cors', 'json.response']], function () {
     //Route::post('change-password/{user:email}', 'Auth\ForgetPasswordController@changePassword');
 
     Route::middleware(['auth:sanctum'])->group(function () {
-        Route::get('/current', function (Request $request) {
-            return auth()->user();
-        });
+        Route::apiResource('admins', 'AdminController');
+        Route::get('admins', 'AdminController@index');
+        Route::post('admins', 'AdminController@store');
+        Route::post('admins/update-info','AdminController@updateInfo');
+        Route::post('admins/update-password','AdminController@updatePassword');
+        Route::get('admin', 'AdminController@show');
+        Route::post('delete/admin/{admin}', 'AdminController@destroy');
         Route::post('logout', 'Auth\AuthController@logout');
-        //Route::post('/users/update-info','ProfileController@updateInfo');
-        //Route::post('/users/update-password','ProfileController@updatePassword');
     });
 });

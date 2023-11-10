@@ -13,7 +13,7 @@ class StoreAdminRequest extends FormRequest
      */
     public function authorize()
     {
-        return abilities()->contains('create_admins');
+        return TRUE;
     }
 
     /**
