@@ -15,7 +15,7 @@ class AdminController extends Controller
     {
         $admins = Admin::where('email', '!=', 'support@test.com')->get();
         
-        return $this->success("", ["admins" => AdminResource::collection($admins)]);
+        return $this->success("", AdminResource::collection($admins));
     }
 
     public function store(StoreAdminRequest $request)
