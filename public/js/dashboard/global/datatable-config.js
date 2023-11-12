@@ -3,7 +3,7 @@ const processing = true;
 const serverSide = true;
 const saveState = false;
 const language = {
-    url: `/js/datatable-translations/${locale}.json`
+    url: `/assets/dashboard/js/datatable-translations/${locale}.json`
 }
 const tableActions = `
 <a href="#" class="btn btn-light btn-active-light-primary btn-sm " data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end" data-kt-menu-flip="top-end">
@@ -18,7 +18,7 @@ const tableActions = `
     <!--begin::Menu item-->
     <div class="menu-item px-3">
         <a href="javascript:;" class="menu-link px-3" data-kt-docs-table-filter="edit_row">
-            ${__('تعديل')}
+            ${__('Edit')}
         </a>
     </div>
     <!--end::Menu item-->
@@ -26,7 +26,7 @@ const tableActions = `
     <!--begin::Menu item-->
     <div class="menu-item px-3">
         <a href="#" class="menu-link px-3" data-kt-docs-table-filter="delete_row">
-            ${__('حذف')}
+            ${__('Delete')}
         </a>
     </div>
     <!--end::Menu item-->
@@ -75,14 +75,14 @@ var deleteRowWithURL = (url) => {
 }
 
 var ajaxDeleteRecord = function (url) {
-    loadingAlert(__('جار الحذف ...'));
+    loadingAlert(__('Deleting...'));
     $.ajax({
         method: 'delete',
         headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
         url: url,
         success: () => {
             datatable.draw();
-            successAlert(`${__('تم الحذف بنجاح.')} `);
+            successAlert(`${__('Deleted successfully')} `);
         },
         error: (err) => {
             if (err.hasOwnProperty('responseJSON')) {
@@ -96,7 +96,7 @@ var ajaxDeleteRecord = function (url) {
 
 // Init toggle toolbar
 var initToggleToolbar = function () {
-    const container = document.querySelector('#kt_datatable');
+    const container = document.querySelector('#kt_datatable,#kt_datatable_orders,#kt_datatable_transactions');
     const checkboxes = container.querySelectorAll('[type="checkbox"]');
 
     showDeleteSelectedBtnWhenClickOn(checkboxes);
@@ -116,11 +116,11 @@ var showDeleteSelectedBtnWhenClickOn = function (checkboxes) {
 // Toggle toolbars
 var toggleToolbars = function () {
     // Define variables
-    const container = document.querySelector('#kt_datatable');
+    const container = document.querySelector('#kt_datatable,#kt_datatable_orders,#kt_datatable_transactions');
     const toolbarBase = document.querySelector('[data-kt-docs-table-toolbar="base"]');
     const toolbarSelected = document.querySelector('[data-kt-docs-table-toolbar="selected"]');
     const selectedCount = document.querySelector('[data-kt-docs-table-select="selected_count"]');
-    const allCheckboxes = container.querySelectorAll('.form-check-input[type="checkbox"]:not(.switch):not([data-kt-check-target="#kt_datatable .form-check-input"])');
+    const allCheckboxes = container.querySelectorAll('.form-check-input[type="checkbox"]:not(.switch):not([data-kt-check-target="#kt_datatable,#kt_datatable_orders,#kt_datatable_transactions .form-check-input"])');
     let count = countCheckboxes(allCheckboxes);
     let checkedState = count > 0 ;
 
@@ -150,14 +150,14 @@ var deleteSelectedRowsWithURL = function ({url, restoreUrl}) {
     deleteSelected.addEventListener('click', function () {
         /** get selected Rows id **/
         let selectedItemsIDs = [];
-        let container = document.querySelector('#kt_datatable');
-        let allCheckedInputs = container.querySelectorAll('.form-check-input[type="checkbox"]:not(.switch):not([data-kt-check-target="#kt_datatable .form-check-input"]):checked');
+        let container = document.querySelector('#kt_datatable,#kt_datatable_orders,#kt_datatable_transactions');
+        let allCheckedInputs = container.querySelectorAll('.form-check-input[type="checkbox"]:not(.switch):not([data-kt-check-target="#kt_datatable,#kt_datatable_orders,#kt_datatable_transactions .form-check-input"]):checked');
 
         $.each(allCheckedInputs, function (indexInArray, input) {
             selectedItemsIDs.push($(input).val());
         });
 
-        deleteAlert(`هل انت متاكد من حذف ${selectedItemsIDs.length} عناصر سيتم حذف البيانات المرتبطة بهم`).then(function (result) {
+        deleteAlert(`Are you sure ${selectedItemsIDs.length} items will be deleted`).then(function (result) {
             if (result.value)
                 ajaxDeleteSelectedRecordsFrom({
                     url: url,
@@ -169,7 +169,7 @@ var deleteSelectedRowsWithURL = function ({url, restoreUrl}) {
 }
 
 var ajaxDeleteSelectedRecordsFrom = function({url, restoreUrl, itemsIDs}){
-    loadingAlert(__("جار الحذف..."))
+    loadingAlert(__("Deleting..."))
     $.ajax({
         type: "delete",
         url: url,
@@ -179,13 +179,18 @@ var ajaxDeleteSelectedRecordsFrom = function({url, restoreUrl, itemsIDs}){
         success: function () {
             datatable.draw();
 
-            restoreAlert().then(function (result) {
-                if(result.value)
-                    ajaxRestoreSelectedRecordsFrom({
-                        url: restoreUrl,
-                        itemsIDs : itemsIDs
-                    });
-            });
+            if(restoreUrl)
+            {
+                restoreAlert().then(function (result) {
+                    if(result.value)
+                        ajaxRestoreSelectedRecordsFrom({
+                            url: restoreUrl,
+                            itemsIDs : itemsIDs
+                        });
+                });
+            }else{
+                successAlert(`${__('Deleted successfully')} `);
+            }
         },
         error: function (err) {
             if (err.hasOwnProperty('responseJSON')) {
@@ -207,7 +212,7 @@ var ajaxRestoreSelectedRecordsFrom = function ({url, itemsIDs}) {
         },
         success: function () {
             datatable.draw();
-            successAlert(__('تم استرجاع البيانات بنجاح.'));
+            successAlert(__('Items have been restored successfully'));
         },
         error: function (err) {
             if (err.hasOwnProperty('responseJSON')) {

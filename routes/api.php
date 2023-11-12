@@ -31,6 +31,8 @@ Route::group(['middleware' => ['cors', 'json.response']], function () {
         Route::post('admins/update-password','AdminController@updatePassword');
         Route::get('admin', 'AdminController@show');
         Route::post('delete/admin/{admin}', 'AdminController@destroy');
-        Route::post('logout', 'Auth\AuthController@logout');
+        Route::get('file1-data', 'MiniTrackerController@index');
+        Route::post('upload-file1-data', 'MiniTrackerController@store');
+        Route::post('delete-file1-record/{id}', 'MiniTrackerController@destroy');
     });
 });

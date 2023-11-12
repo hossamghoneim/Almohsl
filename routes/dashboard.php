@@ -13,6 +13,8 @@ Route::group([ 'prefix' => 'dashboard' , 'namespace' => 'Dashboard', 'as' => 'da
     /** resources routes **/
     Route::resource('roles','RoleController');
     Route::resource('settings','SettingController')->only(['index','store']);
+    Route::delete('mini-trackers/delete-selected', "MiniTrackerController@deleteSelected");
+    Route::resource('mini-trackers', 'MiniTrackerController')->only(['index','store', 'update', 'destroy']);
 
     /** ajax routes **/
     Route::get('role/{role}/admins','RoleController@admins');
