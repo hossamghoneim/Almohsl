@@ -15,6 +15,9 @@ Route::group([ 'prefix' => 'dashboard' , 'namespace' => 'Dashboard', 'as' => 'da
     Route::resource('settings','SettingController')->only(['index','store']);
     Route::delete('mini-trackers/delete-selected', "MiniTrackerController@deleteSelected");
     Route::resource('mini-trackers', 'MiniTrackerController')->only(['index','store', 'update', 'destroy']);
+    Route::post('upload-mini-file', 'MiniTrackerController@upload_excel_file')->name('upload-mini-file');
+    Route::resource('big-trackers', 'BigTrackerController')->only(['index','store', 'update', 'destroy', 'show']);
+    Route::post('upload-big-file', 'BigTrackerController@upload_excel_file')->name('upload-big-file');
 
     /** ajax routes **/
     Route::get('role/{role}/admins','RoleController@admins');

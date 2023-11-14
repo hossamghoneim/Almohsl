@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Events\FileOneImportValidationEvent;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreMiniTrackerRequest;
 use App\Http\Resources\MiniTrackerResource;
 use App\Models\CarNumber;
 use App\Models\MiniTracker;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class MiniTrackerController extends Controller
 {
@@ -55,5 +57,27 @@ class MiniTrackerController extends Controller
         $miniTracker->delete();
 
         return $this->success('Data deleted successfully');
+    }
+
+    public function upload_excel_file(Request $request)
+    {
+        $this->validate($request, [
+            'file' => 'required|mimes:xlsx'
+        ]);
+
+        if ($request->hasFile('file')) {
+            // store file and save its name
+            $file = Storage::disk('public')->putFileAs(
+                'miniFiles',
+                request()->file('file'),
+                uniqid() . "-" . request()->file('file')->getClientOriginalName()
+            );
+
+            event(new FileOneImportValidationEvent($file));
+
+            return $this->success('File uploaded successfully');
+        }
+
+        return $this->failure('Error has been occurred while uploading, try again later');
     }
 }

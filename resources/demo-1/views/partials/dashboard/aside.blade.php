@@ -48,6 +48,15 @@
                     </a>
                 </div>
 
+                <div class="menu-item">
+                    <a class="menu-link {{ isTabActive('dashboard.big-trackers*') }}" href="{{ route('dashboard.big-trackers.index') }}"  data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-dismiss="click" data-bs-placement="right">
+                    <span class="menu-icon">
+                            <i class="fa fa-file"></i>
+                    </span>
+                    <span class="menu-title"> {{ __("File 2") }}</span>
+                    </a>
+                </div>
+
             </div>
             <!--end::Menu-->
         </div>

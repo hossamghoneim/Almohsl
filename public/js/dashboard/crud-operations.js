@@ -1,5 +1,6 @@
 window['onAjaxSuccess'] = () => {
     $("#crud_modal").modal('hide')
+    $("#kt_modal_upload").modal('hide')
     datatable.draw();
 }
 
@@ -15,6 +16,7 @@ window['onAjaxError'] = (status, response) => {
                 datatable.draw();
 
                 $("#crud_modal").modal('hide')
+                $("#kt_modal_upload").modal('hide')
                 showToast("تم إستعادة العنصر بنجاح");
                 removeValidationMessages();
 

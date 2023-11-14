@@ -2,16 +2,16 @@
 
 namespace App\Http\Controllers\Dashboard;
 
-use App\Events\FileOneImportValidationEvent;
+use App\Events\FileTwoImportValidationEvent;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\StoreMiniTrackerRequest;
-use App\Http\Requests\UpdateMiniTrackerRequest;
+use App\Http\Requests\UpdateBigTrackerRequest;
+use App\Models\BigTracker;
 use App\Models\CarNumber;
 use App\Models\MiniTracker;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
-class MiniTrackerController extends Controller
+class BigTrackerController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -19,41 +19,19 @@ class MiniTrackerController extends Controller
     public function index(Request $request)
     {
         if ($request->ajax()){
-            $data = getModelData( model: new MiniTracker(), relations: ['carNumber' => ['id', 'number']]);
+            $data = getModelData( model: new BigTracker(), relations: ['carNumber' => ['id', 'number']]);
             return response()->json($data);
         }
 
-        return view('dashboard.mini-trackers.index');
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(StoreMiniTrackerRequest $request)
-    {
-        $data = $request->except('car_number');
-        $carNumber = CarNumber::where('number', $request->validated()['car_number'])->first();
-
-        if($carNumber)
-        {
-            $data['car_number_id'] = $carNumber->id;
-        }else{
-            $carNumber = CarNumber::create([
-                'number' => $request->validated()['car_number']
-            ]);
-
-            $data['car_number_id'] = $carNumber->id;
-        }
-
-        MiniTracker::create($data);
+        return view('dashboard.big-trackers.index');
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateMiniTrackerRequest $request, string $id)
+    public function update(UpdateBigTrackerRequest $request, string $id)
     {
-        $miniTracker = MiniTracker::findOrFail($id);
+        $bigTracker = BigTracker::findOrFail($id);
         $data = $request->except('car_number');
         $carNumber = CarNumber::where('number', $request->validated()['car_number'])->first();
 
@@ -68,7 +46,12 @@ class MiniTrackerController extends Controller
             $data['car_number_id'] = $carNumber->id;
         }
 
-        $miniTracker->update($data);
+        $bigTracker->update($data);
+    }
+
+    public function show(string $id)
+    {
+
     }
 
     /**
@@ -97,12 +80,12 @@ class MiniTrackerController extends Controller
         if ($request->hasFile('file')) {
             // store file and save its name
             $file = Storage::disk('public')->putFileAs(
-                'miniFiles',
+                'bigFiles',
                 request()->file('file'),
                 uniqid() . "-" . request()->file('file')->getClientOriginalName()
             );
 
-            event(new FileOneImportValidationEvent($file));
+            event(new FileTwoImportValidationEvent($file));
         }
     }
 }

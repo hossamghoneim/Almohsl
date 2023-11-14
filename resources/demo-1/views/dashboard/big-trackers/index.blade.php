@@ -9,7 +9,7 @@
         <div class="card-header border-0 cursor-pointer" role="button" data-bs-toggle="collapse" data-bs-target="#kt_account_profile_details" aria-expanded="true" aria-controls="kt_account_profile_details">
             <!--begin::Card title-->
             <div class="card-title m-0">
-                <h3 class="fw-bold m-0">{{ __('Files List') }}</h3>
+                <h3 class="fw-bold m-0">{{ __('Data List') }}</h3>
             </div>
             <!--end::Card title-->
         </div>
@@ -32,18 +32,7 @@
                 </div>
                 <!--end::Search-->
                 <!--begin::Toolbar-->
-                <div class="d-flex justify-content-end gap-1" id="add_btn" data-bs-toggle="modal" data-bs-target="#crud_modal" data-kt-docs-table-toolbar="base">
-                    <!--begin::Add customer-->
-                    <button type="button" class="btn btn-primary" data-bs-toggle="tooltip" data-bs-original-title="Coming Soon" data-kt-initialized="1">
-                        <!--begin::Svg Icon | path: icons/duotune/arrows/arr075.svg-->
-                        <span class="svg-icon svg-icon-2">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <rect opacity="0.5" x="11.364" y="20.364" width="16" height="2" rx="1" transform="rotate(-90 11.364 20.364)" fill="currentColor"></rect>
-                            <rect x="4.36396" y="11.364" width="16" height="2" rx="1" fill="currentColor"></rect>
-                        </svg>
-                    </span>
-                    <!--end::Svg Icon-->{{ __('add new data') }}</button>
-                    <!--end::Add customer-->
+                <div class="d-flex justify-content-end" id="add_btn" data-bs-toggle="modal" data-bs-target="#crud_modal" data-kt-docs-table-toolbar="base">
                     <!--begin::Add customer-->
                     <button type="button" class="btn btn-primary" id="upload_btn" data-bs-toggle="modal" data-bs-target="#kt_modal_upload">
                     <!--begin::Svg Icon | path: icons/duotune/files/fil018.svg-->
@@ -80,9 +69,9 @@
                         </div>
                     </th>
                     <th>{{ __('Car Number') }}</th>
-                    <th>{{ __('Type') }}</th>
-                    <th>{{ __('Location') }}</th>
-                    <th>{{ __('District') }}</th>
+                    <th>{{ __('Username') }}</th>
+                    <th>{{ __('User Identity') }}</th>
+                    <th>{{ __('Cic') }}</th>
                     <th>{{ __('date') }}</th>
                     <th class=" min-w-100px">{{ __('actions') }}</th>
                 </tr>
@@ -96,8 +85,7 @@
     </div>
     <!--end::Basic info-->
 
-    {{-- begin::Add Country Modal --}}
-    <form id="crud_form" class="ajax-form" action="{{ route('dashboard.mini-trackers.store') }}" method="post" data-success-callback="onAjaxSuccess" data-error-callback="onAjaxError">
+    <form id="crud_form" class="ajax-form" action="#" method="post" data-success-callback="onAjaxSuccess" data-error-callback="onAjaxError">
         @csrf
         <div class="modal fade" tabindex="-1" id="crud_modal">
             <div class="modal-dialog modal-dialog-scrollable">
@@ -118,19 +106,89 @@
                             <div class="fv-plugins-message-container invalid-feedback" id="car_number"></div>
                         </div>
                         <div class="fv-row mb-0 fv-plugins-icon-container">
-                            <label for="type_inp" class="form-label required fs-6 fw-bold mb-3">{{ __('Type') }}</label>
-                            <input type="text" name="type" class="form-control form-control-lg form-control-solid" id="type_inp" placeholder="{{ __('Type') }}" >
-                            <div class="fv-plugins-message-container invalid-feedback" id="type"></div>
+                            <label for="vehicle_manufacturer_inp" class="form-label required fs-6 fw-bold mb-3">{{ __('Vehicle Manufacturer') }}</label>
+                            <input type="text" name="vehicle_manufacturer" class="form-control form-control-lg form-control-solid" id="vehicle_manufacturer_inp" placeholder="{{ __('Vehicle Manufacturer') }}" >
+                            <div class="fv-plugins-message-container invalid-feedback" id="vehicle_manufacturer"></div>
                         </div>
                         <div class="fv-row mb-0 fv-plugins-icon-container">
-                            <label for="location_inp" class="form-label required fs-6 fw-bold mb-3">{{ __('Location') }}</label>
-                            <input type="text" name="location" class="form-control form-control-lg form-control-solid" id="location_inp" placeholder="{{ __('Location') }}" >
-                            <div class="fv-plugins-message-container invalid-feedback" id="location"></div>
+                            <label for="vehicle_model_inp" class="form-label required fs-6 fw-bold mb-3">{{ __('Vehicle Model') }}</label>
+                            <input type="text" name="vehicle_model" class="form-control form-control-lg form-control-solid" id="vehicle_model_inp" placeholder="{{ __('Vehicle model') }}" >
+                            <div class="fv-plugins-message-container invalid-feedback" id="vehicle_model"></div>
                         </div>
                         <div class="fv-row mb-0 fv-plugins-icon-container">
-                            <label for="district_inp" class="form-label required fs-6 fw-bold mb-3">{{ __('District') }}</label>
-                            <input type="text" name="district" class="form-control form-control-lg form-control-solid" id="district_inp" placeholder="{{ __('District') }}" >
-                            <div class="fv-plugins-message-container invalid-feedback" id="district"></div>
+                            <label for="traffic_structure_inp" class="form-label required fs-6 fw-bold mb-3">{{ __('Traffic Structure') }}</label>
+                            <input type="text" name="traffic_structure" class="form-control form-control-lg form-control-solid" id="traffic_structure_inp" placeholder="{{ __('Traffic Structure') }}" >
+                            <div class="fv-plugins-message-container invalid-feedback" id="traffic_structure"></div>
+                        </div>
+                        <div class="fv-row mb-0 fv-plugins-icon-container">
+                            <label for="color_inp" class="form-label required fs-6 fw-bold mb-3">{{ __('Color') }}</label>
+                            <input type="text" name="color" class="form-control form-control-lg form-control-solid" id="color_inp" placeholder="{{ __('Color') }}" >
+                            <div class="fv-plugins-message-container invalid-feedback" id="color"></div>
+                        </div>
+                        <div class="fv-row mb-0 fv-plugins-icon-container">
+                            <label for="model_year_inp" class="form-label required fs-6 fw-bold mb-3">{{ __('Model Year') }}</label>
+                            <input type="text" name="model_year" class="form-control form-control-lg form-control-solid" id="model_year_inp" placeholder="{{ __('Model Year') }}" >
+                            <div class="fv-plugins-message-container invalid-feedback" id="model_year"></div>
+                        </div>
+                        <div class="fv-row mb-0 fv-plugins-icon-container">
+                            <label for="username_inp" class="form-label required fs-6 fw-bold mb-3">{{ __('Username') }}</label>
+                            <input type="text" name="username" class="form-control form-control-lg form-control-solid" id="username_inp" placeholder="{{ __('Username') }}" >
+                            <div class="fv-plugins-message-container invalid-feedback" id="username"></div>
+                        </div>
+                        <div class="fv-row mb-0 fv-plugins-icon-container">
+                            <label for="board_registration_type_inp" class="form-label required fs-6 fw-bold mb-3">{{ __('Board Registration Type') }}</label>
+                            <input type="text" name="board_registration_type" class="form-control form-control-lg form-control-solid" id="board_registration_type_inp" placeholder="{{ __('Board Registration Type') }}" >
+                            <div class="fv-plugins-message-container invalid-feedback" id="board_registration_type"></div>
+                        </div>
+                        <div class="fv-row mb-0 fv-plugins-icon-container">
+                            <label for="user_identity_inp" class="form-label required fs-6 fw-bold mb-3">{{ __('User Identity') }}</label>
+                            <input type="text" name="user_identity" class="form-control form-control-lg form-control-solid" id="user_identity_inp" placeholder="{{ __('User Identity') }}" >
+                            <div class="fv-plugins-message-container invalid-feedback" id="user_identity"></div>
+                        </div>
+                        <div class="fv-row mb-0 fv-plugins-icon-container">
+                            <label for="contract_number_inp" class="form-label required fs-6 fw-bold mb-3">{{ __('Contract Number') }}</label>
+                            <input type="text" name="contract_number" class="form-control form-control-lg form-control-solid" id="contract_number_inp" placeholder="{{ __('Contract Number') }}" >
+                            <div class="fv-plugins-message-container invalid-feedback" id="contract_number"></div>
+                        </div>
+                        <div class="fv-row mb-0 fv-plugins-icon-container">
+                            <label for="cic_inp" class="form-label required fs-6 fw-bold mb-3">{{ __('Cic') }}</label>
+                            <input type="text" name="cic" class="form-control form-control-lg form-control-solid" id="cic_inp" placeholder="{{ __('Cic') }}" >
+                            <div class="fv-plugins-message-container invalid-feedback" id="cic"></div>
+                        </div>
+                        <div class="fv-row mb-0 fv-plugins-icon-container">
+                            <label for="certificate_status_inp" class="form-label required fs-6 fw-bold mb-3">{{ __('Certificate Status') }}</label>
+                            <input type="text" name="certificate_status" class="form-control form-control-lg form-control-solid" id="certificate_status_inp" placeholder="{{ __('Certificate Status') }}" >
+                            <div class="fv-plugins-message-container invalid-feedback" id="certificate_status"></div>
+                        </div>
+                        <div class="fv-row mb-0 fv-plugins-icon-container">
+                            <label for="vehicles_count_inp" class="form-label required fs-6 fw-bold mb-3">{{ __('Vehicles Count') }}</label>
+                            <input type="number" name="vehicles_count" class="form-control form-control-lg form-control-solid" id="vehicles_count_inp" placeholder="{{ __('Vehicles Count') }}" >
+                            <div class="fv-plugins-message-container invalid-feedback" id="vehicles_count"></div>
+                        </div>
+                        <div class="fv-row mb-0 fv-plugins-icon-container">
+                            <label for="product_inp" class="form-label required fs-6 fw-bold mb-3">{{ __('Product') }}</label>
+                            <input type="number" name="product" class="form-control form-control-lg form-control-solid" id="product_inp" placeholder="{{ __('Product') }}" >
+                            <div class="fv-plugins-message-container invalid-feedback" id="product"></div>
+                        </div>
+                        <div class="fv-row mb-0 fv-plugins-icon-container">
+                            <label for="installments_count_inp" class="form-label required fs-6 fw-bold mb-3">{{ __('Installments Count') }}</label>
+                            <input type="number" name="installments_count" class="form-control form-control-lg form-control-solid" id="installments_count_inp" placeholder="{{ __('Installments Count') }}" >
+                            <div class="fv-plugins-message-container invalid-feedback" id="installments_count"></div>
+                        </div>
+                        <div class="fv-row mb-0 fv-plugins-icon-container">
+                            <label for="late_days_count_inp" class="form-label required fs-6 fw-bold mb-3">{{ __('Late Days Count') }}</label>
+                            <input type="number" name="late_days_count" class="form-control form-control-lg form-control-solid" id="late_days_count_inp" placeholder="{{ __('Late Days Count') }}" >
+                            <div class="fv-plugins-message-container invalid-feedback" id="late_days_count"></div>
+                        </div>
+                        <div class="fv-row mb-0 fv-plugins-icon-container">
+                            <label for="city_inp" class="form-label required fs-6 fw-bold mb-3">{{ __('City') }}</label>
+                            <input type="text" name="city" class="form-control form-control-lg form-control-solid" id="city_inp" placeholder="{{ __('City') }}" >
+                            <div class="fv-plugins-message-container invalid-feedback" id="city"></div>
+                        </div>
+                        <div class="fv-row mb-0 fv-plugins-icon-container">
+                            <label for="employer_inp" class="form-label required fs-6 fw-bold mb-3">{{ __('Employer') }}</label>
+                            <input type="text" name="employer" class="form-control form-control-lg form-control-solid" id="employer_inp" placeholder="{{ __('Employer') }}" >
+                            <div class="fv-plugins-message-container invalid-feedback" id="employer"></div>
                         </div>
                     </div>
 
@@ -149,10 +207,9 @@
             </div>
         </div>
     </form>
-    {{-- end::Add Country Modal --}}
 
     <!--begin::Modal - Upload File-->
-    <form id="upload_form" class="ajax-form" action="{{ route('dashboard.upload-mini-file') }}" method="post" data-success-callback="onAjaxSuccess" data-error-callback="onAjaxError" enctype="multipart/form-data">
+    <form id="upload_form" class="ajax-form" action="{{ route('dashboard.upload-big-file') }}" method="post" data-success-callback="onAjaxSuccess" data-error-callback="onAjaxError" enctype="multipart/form-data">
         @csrf
         <div class="modal fade" id="kt_modal_upload" tabindex="-1" aria-hidden="true">
             <!--begin::Modal dialog-->
@@ -211,24 +268,16 @@
 @push('scripts')
     <script src="{{ asset('js/dashboard/global/datatable-config.js') }}"></script>
     <script src="{{ asset('js/dashboard/datatables/datatables.bundle.js') }}"></script>
-    <script src="{{ asset('js/dashboard/datatables/mini-trackers.js') }}"></script>
+    <script src="{{ asset('js/dashboard/datatables/big-trackers.js') }}"></script>
     <script src="{{ asset('js/dashboard/crud-operations.js') }}"></script>
 
     <script>
         $(document).ready(function () {
-            $("#add_btn").click(function (e) {
-                e.preventDefault();
-
-                $("#form_title").text(__('add new data'));
-                $("[name='_method']").remove();
-                $("#crud_form").trigger('reset');
-                $("#crud_form").attr('action', `/dashboard/mini-trackers`);
-            });
             $("#upload_btn").click(function (e) {
                 e.preventDefault();
 
                 $("#upload_form").trigger('reset');
-                $("#upload_form").attr('action', `/dashboard/upload-mini-file`);
+                $("#upload_form").attr('action', `/dashboard/upload-big-file`);
             });
         });
     </script>

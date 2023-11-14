@@ -485,6 +485,9 @@ var hideValidationMessagesOnModalShow = () => {
     $('#crud_modal').on('hidden.bs.modal', function (e) {
         removeValidationMessages();
     });
+    $('#kt_modal_upload').on('hidden.bs.modal', function (e) {
+        removeValidationMessages();
+    });
 }
 
 /** End   :: Helper Functions  **/

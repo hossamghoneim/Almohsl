@@ -32,7 +32,11 @@ Route::group(['middleware' => ['cors', 'json.response']], function () {
         Route::get('admin', 'AdminController@show');
         Route::post('delete/admin/{admin}', 'AdminController@destroy');
         Route::get('file1-data', 'MiniTrackerController@index');
-        Route::post('upload-file1-data', 'MiniTrackerController@store');
+        Route::post('store-file1-data', 'MiniTrackerController@store');
         Route::post('delete-file1-record/{id}', 'MiniTrackerController@destroy');
+        Route::post('upload-file1', 'MiniTrackerController@upload_excel_file');
+        Route::get('file2-data', 'BigTrackerController@index');
+        Route::post('delete-file2-record/{id}', 'BigTrackerController@destroy');
+        Route::post('upload-file2', 'BigTrackerController@upload_excel_file');
     });
 });
