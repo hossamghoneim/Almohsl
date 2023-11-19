@@ -15,7 +15,7 @@ class FileTwoImport implements ToCollection
      */
     public function collection(Collection $collection)
     {
-
+        
         // filter headers for take only columns with data
         $dataHeaders = $collection[0]->filter(function ($value) {
             return $value != null;
@@ -49,17 +49,17 @@ class FileTwoImport implements ToCollection
                 'vehicle_model' => $row[$dataHeaders->search('طراز المركبة')],
                 'traffic_structure' => $row[$dataHeaders->search('هيكل المرور')],
                 'color' => $row[$dataHeaders->search('اللون')],
-                'model_year' => $row[$dataHeaders->search('الموديل')],
+                'model_year' => $row[$dataHeaders->search('الموديل ')],
                 'username' => $row[$dataHeaders->search('اسم العميل')],
                 'board_registration_type' => $row[$dataHeaders->search('نوع تسجيل اللوحة')] ?? __('لا يوجد'),
                 'user_identity' => $row[$dataHeaders->search('هوية المستخدم')],
-                'contract_number' => $row[$dataHeaders->search('رقم العقد')],
-                'cic' => $row[$dataHeaders->search('CIC')],
-                'certificate_status' => $row[$dataHeaders->search('حالة الشهادة')],
+                'contract_number' => $row[$dataHeaders->search('رقم العقد ')],
+                'cic' => $row[$dataHeaders->search('   CIC    ')],
+                'certificate_status' => $row[$dataHeaders->search('حالة الشهادة ')],
                 'vehicles_count' => $row[$dataHeaders->search('عدد المركبات')],
                 'product' => $row[$dataHeaders->search('المنتج')],
                 'installments_count' => $row[$dataHeaders->search('عدد الأقساط')],
-                'late_days_count' => $row[$dataHeaders->search('أيام التاخير')],
+                'late_days_count' => $row[$dataHeaders->search('أيام التاخير ')],
                 'city' => $row[$dataHeaders->search('المدينة')],
                 'employer' => $row[$dataHeaders->search('جهة العمل')]
             ]);
