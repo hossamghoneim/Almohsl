@@ -86,6 +86,7 @@ let displayValidationMessages = function(errors ,form) {
     form.find('.form-control:not(".controls")').addClass('is-valid')
     form.find('.form-select').addClass('is-valid')
     $.each(errors, (key, errorMessage) => getErrorElement(key).html(errorMessage).css('display','block'));
+    $.each(errors, (key, errorMessage) => getExcelError('excel_error').html(errorMessage).css('display','block'));
     scrollToFirstErrorElement(errors);
 }
 
@@ -121,6 +122,28 @@ function getErrorElement(errorKey) {
     if (!errorElement.length){
         let inputName = getFormRepeaterInputName(errorKey);
         errorInput = $(`[name='${inputName}']`);
+        errorElement = errorInput.siblings('.error-element');
+    }
+    errorInput.removeClass('is-valid');
+    errorInput.addClass('is-invalid');
+    /** For select2 **/
+    if (errorInput.hasClass('form-select')) {
+        let $select2Span = errorInput.siblings('.select2-container').find('.select2-selection');
+        $select2Span.removeClass('is-valid');
+        $select2Span.addClass('is-invalid');
+    }
+
+    return errorElement
+}
+
+function getExcelError(errorKey) {
+    let inputId = errorKey;
+    let errorInput   = $("#" + inputId + '_inp' );
+    let errorElement = $("#" + inputId );
+
+    if (!errorElement.length){
+        let inputName = getFormRepeaterInputName(errorKey);
+        errorInput = $("#excel_error");
         errorElement = errorInput.siblings('.error-element');
     }
     errorInput.removeClass('is-valid');

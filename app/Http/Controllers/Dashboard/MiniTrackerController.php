@@ -8,6 +8,7 @@ use App\Http\Requests\StoreMiniTrackerRequest;
 use App\Http\Requests\UpdateMiniTrackerRequest;
 use App\Models\CarNumber;
 use App\Models\MiniTracker;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
@@ -33,6 +34,7 @@ class MiniTrackerController extends Controller
     {
         $data = $request->except('car_number');
         $carNumber = CarNumber::where('number', $request->validated()['car_number'])->first();
+        $todayDate = Carbon::now();
 
         if($carNumber)
         {
@@ -44,6 +46,7 @@ class MiniTrackerController extends Controller
 
             $data['car_number_id'] = $carNumber->id;
         }
+        $data['date'] = $todayDate->toDateString();
 
         MiniTracker::create($data);
     }

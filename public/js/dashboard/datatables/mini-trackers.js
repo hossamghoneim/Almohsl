@@ -25,6 +25,8 @@ var KTDatatablesServerSide = function () {
                 { data: 'car_number.number', name: 'car_number_id'},
                 { data: 'type' },
                 { data: 'location' },
+                { data: 'lat' },
+                { data: 'lng' },
                 { data: 'district' },
                 { data: 'created_at' },
                 { data: null },
@@ -116,6 +118,8 @@ var KTDatatablesServerSide = function () {
                 $("#car_number_inp").val(data.car_number.number);
                 $("#type_inp").val(data.type);
                 $("#location_inp").val(data.location);
+                $("#lat_inp").val(data.lat);
+                $("#lng_inp").val(data.lng);
                 $("#district_inp").val(data.district);
                 $("#crud_form").attr('action', `/dashboard/${dbTable}/${data.id}`);
                 $("#crud_form").prepend(`<input type="hidden" name="_method" value="PUT">`);
