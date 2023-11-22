@@ -11,13 +11,18 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('big_trackers', function (Blueprint $table) {
+        Schema::create('matched_cars', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('car_number_id');
-            $table->integer('source');
+            $table->string('car_number');
+            $table->string('type');
+            $table->double('lat')->nullable();
+            $table->double('lng')->nullable();
+            $table->string('district')->nullable();
+            $table->string('location');
             $table->string('vehicle_manufacturer');
             $table->string('vehicle_model');
             $table->string('traffic_structure');
+            $table->integer('source');
             $table->string('color');
             $table->string('model_year');
             $table->string('username');
@@ -32,8 +37,6 @@ return new class extends Migration
             $table->integer('late_days_count');
             $table->string('city');
             $table->string('employer');
-
-            $table->foreign('car_number_id')->references('id')->on('car_numbers')->onDelete('cascade');
             $table->timestamps();
         });
     }
@@ -43,6 +46,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('big_trackers');
+        Schema::dropIfExists('matched_cars');
     }
 };

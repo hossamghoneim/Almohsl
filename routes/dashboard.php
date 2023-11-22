@@ -18,6 +18,8 @@ Route::group([ 'prefix' => 'dashboard' , 'namespace' => 'Dashboard', 'as' => 'da
     Route::post('upload-mini-file', 'MiniTrackerController@upload_excel_file')->name('upload-mini-file');
     Route::resource('big-trackers', 'BigTrackerController')->only(['index','store', 'update', 'destroy', 'show']);
     Route::post('upload-big-file', 'BigTrackerController@upload_excel_file')->name('upload-big-file');
+    Route::delete('matched-cars/delete-selected', "MatchedCarController@deleteSelected");
+    Route::resource('matched-cars', 'MatchedCarController')->only(['index', 'show', 'destroy']);
 
     /** ajax routes **/
     Route::get('role/{role}/admins','RoleController@admins');

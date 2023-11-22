@@ -45,9 +45,9 @@ class MiniTrackerController extends Controller
         }
         $data['date'] = $todayDate->toDateString();
 
-        MiniTracker::create($data);
+        $miniTracker = MiniTracker::create($data);
 
-        return $this->success('Data created successfully');
+        return $this->success("Data created successfully", new MiniTrackerResource($miniTracker));
     }
 
     /**
@@ -78,7 +78,9 @@ class MiniTrackerController extends Controller
 
             event(new FileOneImportValidationEvent($file));
 
-            return $this->success('File uploaded successfully');
+            $miniTrackers = MiniTracker::with('carNumber')->get();
+
+            return $this->success("File uploaded successfully", MiniTrackerResource::collection($miniTrackers));
         }
 
         return $this->failure('Error has been occurred while uploading, try again later');

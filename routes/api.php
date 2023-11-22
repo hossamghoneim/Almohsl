@@ -38,5 +38,7 @@ Route::group(['middleware' => ['cors', 'json.response']], function () {
         Route::get('file2-data', 'BigTrackerController@index');
         Route::post('delete-file2-record/{id}', 'BigTrackerController@destroy');
         Route::post('upload-file2', 'BigTrackerController@upload_excel_file');
+        Route::get('matched-data', 'MatchedCarController@index');
+        Route::post('delete-matched-data-record/{id}', 'MatchedCarController@destroy');
     });
 });
