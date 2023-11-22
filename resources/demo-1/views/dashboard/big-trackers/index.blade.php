@@ -219,7 +219,7 @@
                     <!--begin::Modal header-->
                     <div class="modal-header">
                         <!--begin::Modal title-->
-                        <h2 class="fw-bolder">Upload files</h2>
+                        <h2 class="fw-bolder">{{ __('Upload File') }}</h2>
                         <!--end::Modal title-->
                         <!--begin::Close-->
                         <div class="btn btn-icon btn-sm btn-active-icon-primary" data-bs-dismiss="modal">
@@ -240,10 +240,9 @@
                         <!--begin::Input group-->
                         <div class="form-group">
                             <input type="file" name="file" id="file_inp">
-                            <!--begin::Hint-->
-                            <span class="form-text fs-6 text-muted">Max file size is 1MB per file.</span>
-                            <!--end::Hint-->
                             <div class="fv-plugins-message-container invalid-feedback" id="file"></div>
+
+                            <div class="fv-plugins-message-container invalid-feedback" id="excel_error"></div>
                         </div>
                         <!--end::Input group-->
                     </div>

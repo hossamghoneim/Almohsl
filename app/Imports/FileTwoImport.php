@@ -7,6 +7,7 @@ use App\Models\CarNumber;
 use App\Models\MatchedCar;
 use App\Models\MiniTracker;
 use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\Validator;
 use Maatwebsite\Excel\Concerns\ToCollection;
 
 class FileTwoImport implements ToCollection
@@ -17,6 +18,11 @@ class FileTwoImport implements ToCollection
      */
     public function collection(Collection $collection)
     {
+        $validator = Validator::make($collection->toArray(), [
+            '*.1' => ['required'],
+        ], [
+            '*.1.required' => __('Car number is required'),
+        ])->validate();
         
         // filter headers for take only columns with data
         $dataHeaders = $collection[0]->filter(function ($value) {
