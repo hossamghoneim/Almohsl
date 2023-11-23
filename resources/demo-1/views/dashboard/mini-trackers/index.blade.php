@@ -85,6 +85,7 @@
                     <th>{{ __('Latitude') }}</th>
                     <th>{{ __('Longitude') }}</th>
                     <th>{{ __('District') }}</th>
+                    <th>{{ __('Url') }}</th>
                     <th>{{ __('date') }}</th>
                     <th class=" min-w-100px">{{ __('actions') }}</th>
                 </tr>
@@ -143,6 +144,11 @@
                             <label for="district_inp" class="form-label fs-6 fw-bold mb-3">{{ __('District') }}</label>
                             <input type="text" name="district" class="form-control form-control-lg form-control-solid" id="district_inp" placeholder="{{ __('District') }}" >
                             <div class="fv-plugins-message-container invalid-feedback" id="district"></div>
+                        </div>
+                        <div class="fv-row mb-0 fv-plugins-icon-container">
+                            <label for="url_inp" class="form-label required fs-6 fw-bold mb-3">{{ __('Url') }}</label>
+                            <input type="text" name="url" class="form-control form-control-lg form-control-solid" id="url_inp" placeholder="{{ __('Url') }}" >
+                            <div class="fv-plugins-message-container invalid-feedback" id="url"></div>
                         </div>
                     </div>
 

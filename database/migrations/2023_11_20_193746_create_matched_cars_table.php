@@ -19,6 +19,7 @@ return new class extends Migration
             $table->double('lng')->nullable();
             $table->string('district')->nullable();
             $table->string('location');
+            $table->string('url');
             $table->string('vehicle_manufacturer');
             $table->string('vehicle_model');
             $table->string('traffic_structure');

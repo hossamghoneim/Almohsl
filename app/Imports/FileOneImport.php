@@ -26,12 +26,14 @@ class FileOneImport implements ToCollection
             '*.2' => 'required',
             '*.4' => 'required',
             '*.5' => 'required',
+            '*.6' => 'required',
         ], [
             '*.0.required' => __('Car number is required'),
             '*.1.required' => __('Type is required'),
             '*.2.required' => __('Location is required'),
             '*.4.required' => __('Latitude is required'),
-            '*.5.required' => __('Longitude is required')
+            '*.5.required' => __('Longitude is required'),
+            '*.6.required' => __('URL is required')
         ])->validate();
         
         // filter headers for take only columns with data
@@ -70,6 +72,7 @@ class FileOneImport implements ToCollection
                 'lat' => $row[$dataHeaders->search('خط العرض')],
                 'lng' => $row[$dataHeaders->search('خط الطول')],
                 'date' => Carbon::now()->toDateString(),
+                'url' => $row[$dataHeaders->search('الرابط')],
             ]);
 
             $bigTrackers = BigTracker::with('carNumber')->where('car_number_id', $carNumber)->get();
@@ -100,6 +103,7 @@ class FileOneImport implements ToCollection
                     'district' => $row[$dataHeaders->search('الحي')],
                     'lat' => $row[$dataHeaders->search('خط العرض')],
                     'lng' => $row[$dataHeaders->search('خط الطول')],
+                    'url' => $row[$dataHeaders->search('الرابط')],
                 ]);
             }
         }

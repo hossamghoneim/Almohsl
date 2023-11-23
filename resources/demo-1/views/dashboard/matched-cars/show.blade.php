@@ -73,6 +73,13 @@
                                         <tr>
                                             <td class="text-muted">
                                                 <div class="d-flex align-items-center">
+                                                <i class="ki-outline ki-phone fs-2 me-2"></i>{{ __('Url') }}</div>
+                                            </td>
+                                            <td class="fw-bold text-end"><a href="{{ $matchedCar->url }}" target="_blank">{{ $matchedCar->url }}</a></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="text-muted">
+                                                <div class="d-flex align-items-center">
                                                 <i class="ki-outline ki-phone fs-2 me-2"></i>{{ __('Vehicle manufacturer') }}</div>
                                             </td>
                                             <td class="fw-bold text-end">{{ $matchedCar->vehicle_manufacturer }}</td>

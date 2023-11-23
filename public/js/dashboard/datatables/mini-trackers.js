@@ -28,6 +28,7 @@ var KTDatatablesServerSide = function () {
                 { data: 'lat' },
                 { data: 'lng' },
                 { data: 'district' },
+                { data: 'url' },
                 { data: 'created_at' },
                 { data: null },
             ],
@@ -40,6 +41,15 @@ var KTDatatablesServerSide = function () {
                             <div class="form-check form-check-sm form-check-custom form-check-solid">
                                 <input class="form-check-input" type="checkbox" value="${data}" />
                             </div>`;
+                    }
+                },
+                {
+                    targets: 7,
+                    render: function (data)
+                    {
+                        return `<a href="${data}" target="_blank">
+                                    ${data}
+                                </a>`
                     }
                 },
                 {
@@ -121,6 +131,7 @@ var KTDatatablesServerSide = function () {
                 $("#lat_inp").val(data.lat);
                 $("#lng_inp").val(data.lng);
                 $("#district_inp").val(data.district);
+                $("#url_inp").val(data.url);
                 $("#crud_form").attr('action', `/dashboard/${dbTable}/${data.id}`);
                 $("#crud_form").prepend(`<input type="hidden" name="_method" value="PUT">`);
                 $("#crud_modal").modal('show');

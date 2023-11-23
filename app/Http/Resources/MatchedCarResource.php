@@ -23,6 +23,7 @@ class MatchedCarResource extends JsonResource
             "lng" => $this->lng,
             "district" => $this->district,
             "location" => $this->location,
+            "url" => $this->url,
             "vehicle_manufacturer" => $this->vehicle_manufacturer,
             "vehicle_model" => $this->vehicle_model,
             "traffic_structure" => $this->traffic_structure,

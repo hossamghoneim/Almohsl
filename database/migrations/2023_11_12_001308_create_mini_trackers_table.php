@@ -19,6 +19,7 @@ return new class extends Migration
             $table->double('lat')->nullable();
             $table->double('lng')->nullable();
             $table->string('district')->nullable();
+            $table->string('url');
             $table->date('date');
 
             $table->foreign('car_number_id')->references('id')->on('car_numbers')->onDelete('cascade');
