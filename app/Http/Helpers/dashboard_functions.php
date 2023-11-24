@@ -162,25 +162,18 @@ if(!function_exists('getDateRangeArray')){ // takes 'Y-m-d - Y-m-d' and returns 
 
 if ( !function_exists('getModelData') ) {
 
-    function getModelData(Model $model, $orsFilters = [] , $andsFilters = [] ,$relations = [],$searchingColumns = null, $onlyTrashed = false) : array
+    function getModelData(Model $model, $relations = [], $orsFilters = [] , $andsFilters = [], $searchingColumns = null, $onlyTrashed = false) : array
     {
 
         $columns              = $searchingColumns ?? $model->getConnection()->getSchemaBuilder()->getColumnListing($model->getTable());
         $relationsWithColumns = getRelationWithColumns($relations); // this fn takes [ brand => [ id , name ] ] then returns : brand:id,name to use it in with clause
 
-
         /** Get the request parameters **/
         $params = request()->all();
 
-        /** Set the current page **/
-        $page = $params['page'] ?? 1;
-
-        /** Set the number of items per page **/
-        $perPage = $params['per_page'] ?? 10;
-
         // set passed filters from controller if exist
         if(!$onlyTrashed)
-            $model   = $model->query()->with( $relationsWithColumns );
+            $model   = $model->query()->with($relationsWithColumns);
         else
             $model   = $model->query()->onlyTrashed()->with( $relationsWithColumns );
 
@@ -200,8 +193,6 @@ if ( !function_exists('getModelData') ) {
                 array_push($orsFilters, [ $column, 'LIKE', "%" . $params['search']['value'] . "%" ]);
 
         }
-
-
 
         // filter search
         if ($itemsBeforeSearch == $model->count()) {
@@ -237,7 +228,7 @@ if ( !function_exists('getModelData') ) {
 
         $model   = $model->where( function ($query) use ( $orsFilters ) {
             foreach ($orsFilters as  $filter)
-                $query->orWhere([$filter]);
+            $query->orWhere([$filter]);
         });
 
         if ( $andsFilters )
@@ -251,12 +242,11 @@ if ( !function_exists('getModelData') ) {
         $response = [
             "recordsTotal" => $model->count(),
             "recordsFiltered" => $model->count(),
-            'data' => $model->skip(($page - 1) * $perPage)->take($perPage)->get()
+            'data' => $model->skip($params['start'])->take($params['length'])->get()
         ];
 
         return $response;
     }
-
 }
 
 
