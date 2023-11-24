@@ -78,9 +78,9 @@ class MiniTrackerController extends Controller
 
             event(new FileOneImportValidationEvent($file));
 
-            $miniTrackers = MiniTracker::with('carNumber')->get();
+            $miniTrackers = MiniTracker::with('carNumber')->latest()->paginate(6);
 
-            return $this->success("File uploaded successfully", MiniTrackerResource::collection($miniTrackers));
+            return $this->successWithPagination("File uploaded successfully", MiniTrackerResource::collection($miniTrackers)->response()->getData(true));
         }
 
         return $this->failure('Error has been occurred while uploading, try again later');

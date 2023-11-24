@@ -49,7 +49,9 @@ class BigTrackerController extends Controller
 
             event(new FileTwoImportValidationEvent($file));
 
-            return $this->success('File uploaded successfully');
+            $bigTrackers = BigTracker::with('carNumber')->latest()->paginate(6);
+
+            return $this->successWithPagination("File uploaded successfully", BigTrackerResource::collection($bigTrackers)->response()->getData(true));
         }
 
         return $this->failure('Error has been occurred while uploading, try again later');

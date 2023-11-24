@@ -19,6 +19,11 @@ class MatchedCarController extends Controller
         return $this->successWithPagination("matchedData", MatchedCarResource::collection($matchedData)->response()->getData(true));
     }
 
+    public function show(MatchedCar $matchedCar)
+    {
+        return $this->success('', new MatchedCarResource($matchedCar));
+    }
+
     /**
      * Remove the specified resource from storage.
      */
