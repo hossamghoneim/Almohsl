@@ -7,6 +7,7 @@ var KTDatatablesServerSide = function () {
     // Private functions
     var initDatatable = function () {
         datatable = $("#kt_datatable").DataTable({
+            language: language,
             searchDelay: searchDelay,
             processing: processing,
             serverSide: serverSide,
