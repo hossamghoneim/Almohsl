@@ -110,16 +110,11 @@ var KTDatatablesServerSide = function () {
                 let currentBtnIndex = $(editButtons).index(d)
                 let data = datatable.row(currentBtnIndex).data();
 
-                $('#roles_inp').val('').trigger('change');
                 $('.image-input-wrapper').css('background-image', `url('${data.full_image_path}')`);
                 $("#form_title").text(__('edit admin'));
                 $("#name_inp").val(data.name);
                 $("#email_inp").val(data.email);
                 $("#phone_inp").val(data.phone);
-                $.each(data.roles, function (index, role) {
-                    var newOption = new Option(role.name, role.id, true, true);
-                    $('#roles_inp').append(newOption).trigger('change');
-                });
                 $("#crud_form").attr('action', `/dashboard/${dbTable}/${data.id}`);
                 $("#crud_form").prepend(`<input type="hidden" name="_method" value="PUT">`);
                 $("[for*='password']").removeClass('required');
@@ -136,7 +131,7 @@ var KTDatatablesServerSide = function () {
             initToggleToolbar();
             handleEditRows();
             deleteRowWithURL(`/dashboard/${dbTable}/`);
-            deleteSelectedRowsWithURL({roles_inp,
+            deleteSelectedRowsWithURL({
                 url: `/dashboard/${dbTable}/delete-selected`,
                 restoreUrl: `/dashboard/${dbTable}/restore-selected`
             });
