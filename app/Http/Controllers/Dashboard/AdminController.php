@@ -59,7 +59,7 @@ class AdminController extends Controller
     {
         $data           = $request->validated();
         $data['status'] = ( bool ) request('status');
-        $admin       = Admin::create($data);
+        $admin       = Admin::lockForUpdate()->create($data);
 
         //$rolesAndDefaultOne = array_merge( $request['roles'] , [ "2" ] );
 
