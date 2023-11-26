@@ -26,16 +26,6 @@ class AdminController extends Controller
         return view('dashboard.admins.index', compact('roles'));
     }
 
-    public function create()
-    {
-
-        //$this->authorize('create_admins');
-        $roles = Role::select('id','name_' . getLocale() )->get();
-
-        return view('dashboard.admins.create',compact('roles'));
-    }
-
-
     public function show(Admin $admin)
     {
 
