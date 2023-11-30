@@ -11,15 +11,13 @@ use Illuminate\Contracts\Validation\ValidationRule;
 class ValidateCarNumberUniqueness implements ValidationRule
 {
     private $carsGroup;
-    private $latsGroup;
-    private $lngsGroup;
+    private $urlsGroup;
     private $miniTrackerID;
 
-    public function __construct($miniTrackerID = null, $carsGroup = null, $latsGroup = null, $lngsGroup = null) 
+    public function __construct($miniTrackerID = null, $carsGroup = null, $urlsGroup = null) 
     {
         $this->carsGroup = $carsGroup;
-        $this->latsGroup = $latsGroup;
-        $this->lngsGroup = $lngsGroup;
+        $this->urlsGroup = $urlsGroup;
         $this->miniTrackerID = $miniTrackerID;
     }
     /**
@@ -41,10 +39,9 @@ class ValidateCarNumberUniqueness implements ValidationRule
                 foreach($miniTrackers as $miniTracker)
                 {
                     $foundCar = collect($this->carsGroup)->contains($carNumber->number); 
-                    $foundLat = collect($this->latsGroup)->contains($miniTracker->lat);
-                    $foundLng = collect($this->lngsGroup)->contains($miniTracker->lng);
+                    $foundUrl = collect($this->urlsGroup)->contains($miniTracker->url);
 
-                    if($foundCar && $foundLat && $foundLng)
+                    if($foundCar && $foundUrl)
                     {
                         $fail(__('Car number ') . $value . __(' has already been taken'));
                     }
@@ -56,12 +53,12 @@ class ValidateCarNumberUniqueness implements ValidationRule
             {
                 if($this->miniTrackerID)
                 {
-                    if(MiniTracker::where('id', '!=', $this->miniTrackerID)->where('car_number_id', $carNumber->id)->where('date', Carbon::now()->toDateString())->where('lat', request()->lat)->where('lng', request()->lng)->first())
+                    if(MiniTracker::where('id', '!=', $this->miniTrackerID)->where('car_number_id', $carNumber->id)->where('date', Carbon::now()->toDateString())->where('url', request()->url)->first())
                     {
                         $fail(__('Car number ') . $value . __(' has already been taken'));
                     }
                 }else{
-                    if(MiniTracker::where('car_number_id', $carNumber->id)->where('date', Carbon::now()->toDateString())->where('lat', request()->lat)->where('lng', request()->lng)->first())
+                    if(MiniTracker::where('car_number_id', $carNumber->id)->where('date', Carbon::now()->toDateString())->where('url', request()->url)->first())
                     {
                         $fail(__('Car number ') . $value . __(' has already been taken'));
                     }

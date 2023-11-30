@@ -21,19 +21,16 @@ class FileOneImport implements ToCollection
     public function collection(Collection $collection)
     {
         $validator = Validator::make($collection->toArray(), [
-            '*.0' => ['required', new ValidateCarNumberUniqueness(null, $collection->pluck('0')->toArray(), $collection->pluck('4')->toArray(), $collection->pluck('5')->toArray())],
-            '*.1' => 'required',
+            '*.0' => ['required', new ValidateCarNumberUniqueness( null, $collection->pluck('0')->toArray(), $collection->pluck('4')->toArray() )],
+            '*.1' => 'nullable',
             '*.2' => 'required',
+            '*.3' => 'required',
             '*.4' => 'required',
-            '*.5' => 'required',
-            '*.6' => 'required',
         ], [
             '*.0.required' => __('Car number is required'),
-            '*.1.required' => __('Type is required'),
             '*.2.required' => __('Location is required'),
-            '*.4.required' => __('Latitude is required'),
-            '*.5.required' => __('Longitude is required'),
-            '*.6.required' => __('URL is required')
+            '*.3.required' => __('District is required'),
+            '*.4.required' => __('URL is required'),
         ])->validate();
         
         // filter headers for take only columns with data
@@ -69,8 +66,6 @@ class FileOneImport implements ToCollection
                 'type' => $row[$dataHeaders->search('النوع')],
                 'location' => $row[$dataHeaders->search('الموقع')],
                 'district' => $row[$dataHeaders->search('الحي')],
-                'lat' => $row[$dataHeaders->search('خط العرض')],
-                'lng' => $row[$dataHeaders->search('خط الطول')],
                 'date' => Carbon::now()->toDateString(),
                 'url' => $row[$dataHeaders->search('الرابط')],
             ]);
@@ -101,8 +96,6 @@ class FileOneImport implements ToCollection
                     'type' => $row[$dataHeaders->search('النوع')],
                     'location' => $row[$dataHeaders->search('الموقع')],
                     'district' => $row[$dataHeaders->search('الحي')],
-                    'lat' => $row[$dataHeaders->search('خط العرض')],
-                    'lng' => $row[$dataHeaders->search('خط الطول')],
                     'url' => $row[$dataHeaders->search('الرابط')],
                 ]);
             }

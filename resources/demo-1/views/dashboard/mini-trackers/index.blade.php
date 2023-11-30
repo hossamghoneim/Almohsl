@@ -79,8 +79,6 @@
                     <th>{{ __('Car Number') }}</th>
                     <th>{{ __('Type') }}</th>
                     <th>{{ __('Location') }}</th>
-                    <th>{{ __('Latitude') }}</th>
-                    <th>{{ __('Longitude') }}</th>
                     <th>{{ __('District') }}</th>
                     <th>{{ __('Url') }}</th>
                     <th>{{ __('date') }}</th>
@@ -118,7 +116,7 @@
                             <div class="fv-plugins-message-container invalid-feedback" id="car_number"></div>
                         </div>
                         <div class="fv-row mb-0 fv-plugins-icon-container">
-                            <label for="type_inp" class="form-label required fs-6 fw-bold mb-3">{{ __('Type') }}</label>
+                            <label for="type_inp" class="form-label fs-6 fw-bold mb-3">{{ __('Type') }}</label>
                             <input type="text" name="type" class="form-control form-control-lg form-control-solid" id="type_inp" placeholder="{{ __('Type') }}" >
                             <div class="fv-plugins-message-container invalid-feedback" id="type"></div>
                         </div>
@@ -128,17 +126,7 @@
                             <div class="fv-plugins-message-container invalid-feedback" id="location"></div>
                         </div>
                         <div class="fv-row mb-0 fv-plugins-icon-container">
-                            <label for="lat_inp" class="form-label fs-6 fw-bold mb-3">{{ __('Latitude') }}</label>
-                            <input type="text" name="lat" class="form-control form-control-lg form-control-solid" id="lat_inp" placeholder="{{ __('Latitude') }}" >
-                            <div class="fv-plugins-message-container invalid-feedback" id="lat"></div>
-                        </div>
-                        <div class="fv-row mb-0 fv-plugins-icon-container">
-                            <label for="lng_inp" class="form-label fs-6 fw-bold mb-3">{{ __('Longitude') }}</label>
-                            <input type="text" name="lng" class="form-control form-control-lg form-control-solid" id="lng_inp" placeholder="{{ __('Longitude') }}" >
-                            <div class="fv-plugins-message-container invalid-feedback" id="lng"></div>
-                        </div>
-                        <div class="fv-row mb-0 fv-plugins-icon-container">
-                            <label for="district_inp" class="form-label fs-6 fw-bold mb-3">{{ __('District') }}</label>
+                            <label for="district_inp" class="form-label required fs-6 fw-bold mb-3">{{ __('District') }}</label>
                             <input type="text" name="district" class="form-control form-control-lg form-control-solid" id="district_inp" placeholder="{{ __('District') }}" >
                             <div class="fv-plugins-message-container invalid-feedback" id="district"></div>
                         </div>
@@ -200,7 +188,6 @@
                             <input type="file" name="file" id="file_inp">
                             <!--begin::Hint-->
                             <!--end::Hint-->
-                            <div class="fv-plugins-message-container invalid-feedback" id="file"></div>
 
                             <div class="fv-plugins-message-container invalid-feedback" id="excel_error"></div>
                         </div>

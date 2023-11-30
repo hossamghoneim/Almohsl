@@ -1,7 +1,7 @@
 UIBlocker = new KTBlockUI(document.querySelector(".modal-content"));
-var showHidePass = function( fieldId , showPwIcon )
+let showHidePass = function( fieldId , showPwIcon )
 {
-    var passField = $("#" + fieldId);
+    let passField = $("#" + fieldId);
 
     if ( passField.attr("type") === "password")
     {
@@ -16,7 +16,7 @@ var showHidePass = function( fieldId , showPwIcon )
 
 }
 
-var blockUi = function(id) {
+let blockUi = function(id) {
     /** block container ui **/
     KTApp.block(id, {
         overlayColor: '#000000',
@@ -25,14 +25,14 @@ var blockUi = function(id) {
     });
 }
 
-var unBlockUi = function(id, timer = 0) {
+let unBlockUi = function(id, timer = 0) {
     /** unblock container ui **/
     setTimeout(function() {
         KTApp.unblock(id);
     }, timer);
 }
 
-var initTinyMc = function( editingInp = false, height = 400 ) {
+let initTinyMc = function( editingInp = false, height = 400 ) {
 
     tinymce.init({
         height,
@@ -54,8 +54,8 @@ $.ajaxSetup({
     headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
 });
 
-var getImagePathFromDirectory = function(imageName, directory, defaultImage = 'default.jpg') {
-    var path = `/storage/Images/${directory}/${imageName}`;
+let getImagePathFromDirectory = function(imageName, directory, defaultImage = 'default.jpg') {
+    let path = `/storage/Images/${directory}/${imageName}`;
 
     if ( imageName && directory && isFileExists( path ))
 
@@ -64,7 +64,7 @@ var getImagePathFromDirectory = function(imageName, directory, defaultImage = 'd
 }
 
 function isFileExists(urlToFile) {
-    var xhr = new XMLHttpRequest();
+    let xhr = new XMLHttpRequest();
     xhr.open('HEAD', urlToFile, false);
     xhr.send();
 
@@ -75,14 +75,14 @@ function isFileExists(urlToFile) {
     }
 }
 
-var removeValidationMessages = function() {
-    var errorElements = $('.invalid-feedback');
+let removeValidationMessages = function() {
+    let errorElements = $('.invalid-feedback');
     errorElements.html('').css('display','none');
     $('form .form-control').removeClass('is-invalid is-valid')
     $('form .form-select').removeClass('is-invalid is-valid')
 }
 
-var displayValidationMessages = function(errors ,form) {
+let displayValidationMessages = function(errors ,form) {
     form.find('.form-control:not(".controls")').addClass('is-valid')
     form.find('.form-select').addClass('is-valid')
     $.each(errors, (key, errorMessage) => getErrorElement(key).html(errorMessage).css('display','block'));
@@ -91,11 +91,11 @@ var displayValidationMessages = function(errors ,form) {
 }
 
 function scrollToFirstErrorElement(errors) {
-    var firstErrorElementId = Object.keys(errors)[0].replaceAll('.','_');
-    var firstErrorElement   = document.getElementById(firstErrorElementId);
+    let firstErrorElementId = Object.keys(errors)[0].replaceAll('.','_');
+    let firstErrorElement   = document.getElementById(firstErrorElementId);
 
     if (!firstErrorElement){
-        var inputName = getFormRepeaterInputName(Object.keys(errors)[0]);
+        let inputName = getFormRepeaterInputName(Object.keys(errors)[0]);
         firstErrorElement = document.getElementsByName(inputName)[0];
     }
 
@@ -103,24 +103,24 @@ function scrollToFirstErrorElement(errors) {
         firstErrorElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
 }
 
-var showMoreInDT = function( element ) {
+let showMoreInDT = function( element ) {
     console.log(12)
     $(element).next().hide();
     $(element).next().next().show();
 
 }
 
-var getStatusObject = function( statusNameEn ) {
+let getStatusObject = function( statusNameEn ) {
     return ordersStatuses.find( ( status ) => status['name_en'] === statusNameEn  ) ?? { "name_ar" : statusNameEn , "name_en" : statusNameEn, "color" : "#219ed4" };
 }
 
 function getErrorElement(errorKey) {
-    var inputId = errorKey.replaceAll('.','_');
-    var errorInput   = $("#" + inputId + '_inp' );
-    var errorElement = $("#" + inputId );
+    let inputId = errorKey.replaceAll('.','_');
+    let errorInput   = $("#" + inputId + '_inp' );
+    let errorElement = $("#" + inputId );
 
     if (!errorElement.length){
-        var inputName = getFormRepeaterInputName(errorKey);
+        let inputName = getFormRepeaterInputName(errorKey);
         errorInput = $(`[name='${inputName}']`);
         errorElement = errorInput.siblings('.error-element');
     }
@@ -128,7 +128,7 @@ function getErrorElement(errorKey) {
     errorInput.addClass('is-invalid');
     /** For select2 **/
     if (errorInput.hasClass('form-select')) {
-        var $select2Span = errorInput.siblings('.select2-container').find('.select2-selection');
+        let $select2Span = errorInput.siblings('.select2-container').find('.select2-selection');
         $select2Span.removeClass('is-valid');
         $select2Span.addClass('is-invalid');
     }
@@ -137,12 +137,12 @@ function getErrorElement(errorKey) {
 }
 
 function getExcelError(errorKey) {
-    var inputId = errorKey;
-    var errorInput   = $("#" + inputId + '_inp' );
-    var errorElement = $("#" + inputId );
+    let inputId = errorKey;
+    let errorInput   = $("#" + inputId + '_inp' );
+    let errorElement = $("#" + inputId );
 
     if (!errorElement.length){
-        var inputName = getFormRepeaterInputName(errorKey);
+        let inputName = getFormRepeaterInputName(errorKey);
         errorInput = $("#excel_error");
         errorElement = errorInput.siblings('.error-element');
     }
@@ -150,7 +150,7 @@ function getExcelError(errorKey) {
     errorInput.addClass('is-invalid');
     /** For select2 **/
     if (errorInput.hasClass('form-select')) {
-        var $select2Span = errorInput.siblings('.select2-container').find('.select2-selection');
+        let $select2Span = errorInput.siblings('.select2-container').find('.select2-selection');
         $select2Span.removeClass('is-valid');
         $select2Span.addClass('is-invalid');
     }
@@ -159,10 +159,10 @@ function getExcelError(errorKey) {
 }
 
 function getFormRepeaterInputName(errorKey){
-    var repeaterInputNameParts = errorKey.split(".");
-    var formRepeaterName = repeaterInputNameParts[0];
-    var repeaterInputIndex = repeaterInputNameParts[1];
-    var repeaterInputName = repeaterInputNameParts[2];
+    let repeaterInputNameParts = errorKey.split(".");
+    let formRepeaterName = repeaterInputNameParts[0];
+    let repeaterInputIndex = repeaterInputNameParts[1];
+    let repeaterInputName = repeaterInputNameParts[2];
 
     return `${formRepeaterName}[${repeaterInputIndex}][${repeaterInputName}]`;
 }
@@ -170,7 +170,7 @@ function getFormRepeaterInputName(errorKey){
 
 /** Begin :: System Alerts  **/
 
-var deleteAlert = function(message = '') {
+let deleteAlert = function(message = '') {
     if(message === '')
         message = `${__('Are you sure you want to delete this') + ' ' + __('item') + ' ' + __('?') + ' ' + __('All data related to this') + ' ' + __('item') + ' ' + __('will be deleted') }`
     return Swal.fire({
@@ -186,7 +186,7 @@ var deleteAlert = function(message = '') {
         }
     })
 }
-var confirmationAlert = function({message = __('Are You sure for doing this action ?'), icon = 'waring', confirmBtnText= __('Yes, Sure !'), cancelButtonText = __('No, Cancel')}) {
+let confirmationAlert = function({message = __('Are You sure for doing this action ?'), icon = 'waring', confirmBtnText= __('Yes, Sure !'), cancelButtonText = __('No, Cancel')}) {
 
     return Swal.fire({
         text: message,
@@ -203,7 +203,7 @@ var confirmationAlert = function({message = __('Are You sure for doing this acti
 }
 
 
-var errorAlert = function(message = __("something went wrong"), time = 5000) {
+let errorAlert = function(message = __("something went wrong"), time = 5000) {
     return Swal.fire({
         text: __(message),
         icon: "error",
@@ -216,7 +216,7 @@ var errorAlert = function(message = __("something went wrong"), time = 5000) {
     });
 }
 
-var successAlert = function(message = __("Operation done successfully") , timer = 2000) {
+let successAlert = function(message = __("Operation done successfully") , timer = 2000) {
 
     return Swal.fire({
         text: message,
@@ -228,7 +228,7 @@ var successAlert = function(message = __("Operation done successfully") , timer 
 
 }
 
-var restoreAlert = function() {
+let restoreAlert = function() {
     return Swal.fire({
         text: __('تم الحذف بنجاح'),
         icon: "success",
@@ -243,7 +243,7 @@ var restoreAlert = function() {
     })
 }
 
-var inputAlert = function() {
+let inputAlert = function() {
 
     return Swal.fire({
         icon:'warning',
@@ -264,7 +264,7 @@ var inputAlert = function() {
 
 }
 
-var changeStatusAlert = function(type = "change") {
+let changeStatusAlert = function(type = "change") {
 
     if(type == 'date')
     {
@@ -300,7 +300,7 @@ var changeStatusAlert = function(type = "change") {
 
 }
 
-var warningAlert        = function(title , message , time = 5000) {
+let warningAlert        = function(title , message , time = 5000) {
     return swal.fire({
         title: __(title),
         text: __(message),
@@ -310,7 +310,7 @@ var warningAlert        = function(title , message , time = 5000) {
     });
 }
 
-var unauthorizedAlert   = function() {
+let unauthorizedAlert   = function() {
     return swal.fire({
         title: __("Error !"),
         text: __("This action is unauthorized."),
@@ -320,7 +320,7 @@ var unauthorizedAlert   = function() {
     });
 }
 
-var loadingAlert  = function(message = __("Loading...") ) {
+let loadingAlert  = function(message = __("Loading...") ) {
 
     return  Swal.fire({
         text: message,
@@ -337,7 +337,7 @@ var loadingAlert  = function(message = __("Loading...") ) {
 
 /** Start :: Helper Functions  **/
 
-var deleteElement = (deletedElementName , deletionUrl , callback ) =>
+let deleteElement = (deletedElementName , deletionUrl , callback ) =>
 {
     deleteAlert(deletedElementName).then(function (result) {
 
@@ -382,9 +382,9 @@ var deleteElement = (deletedElementName , deletionUrl , callback ) =>
 
 function ajaxSubmission({form, successCallback, errorCallback, complete}) {
 
-    var formData  = new FormData( form );
+    let formData  = new FormData( form );
     form = $(form);
-    var submitBtn = $(form).find("[type=submit]");
+    let submitBtn = $(form).find("[type=submit]");
     submitBtn.attr('disabled', true);
 
     $.ajax({
@@ -402,7 +402,7 @@ function ajaxSubmission({form, successCallback, errorCallback, complete}) {
 }
 
 /** Start :: save tiny mce  **/
-var saveTinyMceDataIntoTextArea = () => {
+let saveTinyMceDataIntoTextArea = () => {
     if ( $('textarea[class="tinymce"]').length )
         tinymce.triggerSave();
 }
@@ -413,9 +413,9 @@ function onImgError(image, placeholder = "/placeholder_images/default.png") {
 }
 
 /** Start :: Submit any form in dashboard function  **/
-var submitForm = (form) => {
+let submitForm = (form) => {
 
-    var submitBtn = $(form).find("[type=submit]");
+    let submitBtn = $(form).find("[type=submit]");
 
     submitBtn.attr('disabled',true).attr("data-kt-indicator", "on");
 
@@ -464,7 +464,7 @@ var submitForm = (form) => {
 }
 /** End   :: Submit any form in dashboard function  **/
 
-var showToast = function (message = null) {
+let showToast = function (message = null) {
     const toastElement = document.getElementById('kt_docs_toast_toggle');
     const toast = bootstrap.Toast.getOrCreateInstance(toastElement);
     if(message)
@@ -499,12 +499,12 @@ function playSound(soundElement) {
 
 }
 
-var reinitializeTooltip = () => {
+let reinitializeTooltip = () => {
     const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
     const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
 }
 
-var hideValidationMessagesOnModalShow = () => {
+let hideValidationMessagesOnModalShow = () => {
     $('#crud_modal').on('hidden.bs.modal', function (e) {
         removeValidationMessages();
     });
@@ -538,7 +538,7 @@ $(document).ready(function () {
     /** End   :: ajax request form  **/
 
     /** initialize datepicker inputs */
-    var datePickers = $('.datepicker');
+    let datePickers = $('.datepicker');
 
     if( datePickers.length )
     {
@@ -549,7 +549,7 @@ $(document).ready(function () {
     /** initialize datepicker inputs */
 
     /** initialize timepicker inputs */
-    var timepickers = $('.timepicker');
+    let timepickers = $('.timepicker');
 
     if( timepickers.length )
     {
@@ -564,7 +564,7 @@ $(document).ready(function () {
     /** initialize timepicker inputs */
 
     /** customizing select2 message */
-    var selectBoxes = $('select');
+    let selectBoxes = $('select');
 
     if( selectBoxes.length )
     {

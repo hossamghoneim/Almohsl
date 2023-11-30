@@ -103,17 +103,22 @@
                             <div class="fv-plugins-message-container invalid-feedback" id="car_number"></div>
                         </div>
                         <div class="fv-row mb-0 fv-plugins-icon-container">
-                            <label for="vehicle_manufacturer_inp" class="form-label required fs-6 fw-bold mb-3">{{ __('Vehicle Manufacturer') }}</label>
+                            <label for="source_inp" class="form-label required fs-6 fw-bold mb-3">{{ __('Source') }}</label>
+                            <input type="text" name="source" class="form-control form-control-lg form-control-solid" id="source_inp" placeholder="{{ __('Car Number') }}" >
+                            <div class="fv-plugins-message-container invalid-feedback" id="source"></div>
+                        </div>
+                        <div class="fv-row mb-0 fv-plugins-icon-container">
+                            <label for="vehicle_manufacturer_inp" class="form-label required fs-6 fw-bold mb-3">{{ __('Vehicle manufacturer') }}</label>
                             <input type="text" name="vehicle_manufacturer" class="form-control form-control-lg form-control-solid" id="vehicle_manufacturer_inp" placeholder="{{ __('Vehicle Manufacturer') }}" >
                             <div class="fv-plugins-message-container invalid-feedback" id="vehicle_manufacturer"></div>
                         </div>
                         <div class="fv-row mb-0 fv-plugins-icon-container">
-                            <label for="vehicle_model_inp" class="form-label required fs-6 fw-bold mb-3">{{ __('Vehicle Model') }}</label>
+                            <label for="vehicle_model_inp" class="form-label required fs-6 fw-bold mb-3">{{ __('Vehicle model') }}</label>
                             <input type="text" name="vehicle_model" class="form-control form-control-lg form-control-solid" id="vehicle_model_inp" placeholder="{{ __('Vehicle model') }}" >
                             <div class="fv-plugins-message-container invalid-feedback" id="vehicle_model"></div>
                         </div>
                         <div class="fv-row mb-0 fv-plugins-icon-container">
-                            <label for="traffic_structure_inp" class="form-label required fs-6 fw-bold mb-3">{{ __('Traffic Structure') }}</label>
+                            <label for="traffic_structure_inp" class="form-label required fs-6 fw-bold mb-3">{{ __('Traffic structure') }}</label>
                             <input type="text" name="traffic_structure" class="form-control form-control-lg form-control-solid" id="traffic_structure_inp" placeholder="{{ __('Traffic Structure') }}" >
                             <div class="fv-plugins-message-container invalid-feedback" id="traffic_structure"></div>
                         </div>
@@ -123,7 +128,7 @@
                             <div class="fv-plugins-message-container invalid-feedback" id="color"></div>
                         </div>
                         <div class="fv-row mb-0 fv-plugins-icon-container">
-                            <label for="model_year_inp" class="form-label required fs-6 fw-bold mb-3">{{ __('Model Year') }}</label>
+                            <label for="model_year_inp" class="form-label required fs-6 fw-bold mb-3">{{ __('Model year') }}</label>
                             <input type="text" name="model_year" class="form-control form-control-lg form-control-solid" id="model_year_inp" placeholder="{{ __('Model Year') }}" >
                             <div class="fv-plugins-message-container invalid-feedback" id="model_year"></div>
                         </div>
@@ -133,17 +138,17 @@
                             <div class="fv-plugins-message-container invalid-feedback" id="username"></div>
                         </div>
                         <div class="fv-row mb-0 fv-plugins-icon-container">
-                            <label for="board_registration_type_inp" class="form-label required fs-6 fw-bold mb-3">{{ __('Board Registration Type') }}</label>
+                            <label for="board_registration_type_inp" class="form-label required fs-6 fw-bold mb-3">{{ __('Board registration type') }}</label>
                             <input type="text" name="board_registration_type" class="form-control form-control-lg form-control-solid" id="board_registration_type_inp" placeholder="{{ __('Board Registration Type') }}" >
                             <div class="fv-plugins-message-container invalid-feedback" id="board_registration_type"></div>
                         </div>
                         <div class="fv-row mb-0 fv-plugins-icon-container">
-                            <label for="user_identity_inp" class="form-label required fs-6 fw-bold mb-3">{{ __('User Identity') }}</label>
+                            <label for="user_identity_inp" class="form-label required fs-6 fw-bold mb-3">{{ __('User identity') }}</label>
                             <input type="text" name="user_identity" class="form-control form-control-lg form-control-solid" id="user_identity_inp" placeholder="{{ __('User Identity') }}" >
                             <div class="fv-plugins-message-container invalid-feedback" id="user_identity"></div>
                         </div>
                         <div class="fv-row mb-0 fv-plugins-icon-container">
-                            <label for="contract_number_inp" class="form-label required fs-6 fw-bold mb-3">{{ __('Contract Number') }}</label>
+                            <label for="contract_number_inp" class="form-label required fs-6 fw-bold mb-3">{{ __('Contract number') }}</label>
                             <input type="text" name="contract_number" class="form-control form-control-lg form-control-solid" id="contract_number_inp" placeholder="{{ __('Contract Number') }}" >
                             <div class="fv-plugins-message-container invalid-feedback" id="contract_number"></div>
                         </div>
@@ -153,12 +158,12 @@
                             <div class="fv-plugins-message-container invalid-feedback" id="cic"></div>
                         </div>
                         <div class="fv-row mb-0 fv-plugins-icon-container">
-                            <label for="certificate_status_inp" class="form-label required fs-6 fw-bold mb-3">{{ __('Certificate Status') }}</label>
+                            <label for="certificate_status_inp" class="form-label required fs-6 fw-bold mb-3">{{ __('Certificate status') }}</label>
                             <input type="text" name="certificate_status" class="form-control form-control-lg form-control-solid" id="certificate_status_inp" placeholder="{{ __('Certificate Status') }}" >
                             <div class="fv-plugins-message-container invalid-feedback" id="certificate_status"></div>
                         </div>
                         <div class="fv-row mb-0 fv-plugins-icon-container">
-                            <label for="vehicles_count_inp" class="form-label required fs-6 fw-bold mb-3">{{ __('Vehicles Count') }}</label>
+                            <label for="vehicles_count_inp" class="form-label required fs-6 fw-bold mb-3">{{ __('Vehicles count') }}</label>
                             <input type="number" name="vehicles_count" class="form-control form-control-lg form-control-solid" id="vehicles_count_inp" placeholder="{{ __('Vehicles Count') }}" >
                             <div class="fv-plugins-message-container invalid-feedback" id="vehicles_count"></div>
                         </div>
@@ -168,12 +173,12 @@
                             <div class="fv-plugins-message-container invalid-feedback" id="product"></div>
                         </div>
                         <div class="fv-row mb-0 fv-plugins-icon-container">
-                            <label for="installments_count_inp" class="form-label required fs-6 fw-bold mb-3">{{ __('Installments Count') }}</label>
+                            <label for="installments_count_inp" class="form-label required fs-6 fw-bold mb-3">{{ __('Installments count') }}</label>
                             <input type="number" name="installments_count" class="form-control form-control-lg form-control-solid" id="installments_count_inp" placeholder="{{ __('Installments Count') }}" >
                             <div class="fv-plugins-message-container invalid-feedback" id="installments_count"></div>
                         </div>
                         <div class="fv-row mb-0 fv-plugins-icon-container">
-                            <label for="late_days_count_inp" class="form-label required fs-6 fw-bold mb-3">{{ __('Late Days Count') }}</label>
+                            <label for="late_days_count_inp" class="form-label required fs-6 fw-bold mb-3">{{ __('Late days count') }}</label>
                             <input type="number" name="late_days_count" class="form-control form-control-lg form-control-solid" id="late_days_count_inp" placeholder="{{ __('Late Days Count') }}" >
                             <div class="fv-plugins-message-container invalid-feedback" id="late_days_count"></div>
                         </div>
@@ -237,7 +242,6 @@
                         <!--begin::Input group-->
                         <div class="form-group">
                             <input type="file" name="file" id="file_inp">
-                            <div class="fv-plugins-message-container invalid-feedback" id="file"></div>
 
                             <div class="fv-plugins-message-container invalid-feedback" id="excel_error"></div>
                         </div>

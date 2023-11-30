@@ -14,10 +14,8 @@ return new class extends Migration
         Schema::create('matched_cars', function (Blueprint $table) {
             $table->id();
             $table->string('car_number');
-            $table->string('type');
-            $table->double('lat')->nullable();
-            $table->double('lng')->nullable();
-            $table->string('district')->nullable();
+            $table->string('type')->nullable();
+            $table->string('district');
             $table->string('location');
             $table->string('url');
             $table->string('vehicle_manufacturer');

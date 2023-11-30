@@ -114,6 +114,7 @@ var KTDatatablesServerSide = function () {
 
                 $("#form_title").text(__('edit data'));
                 $("#car_number_inp").val(data.car_number.number);
+                $("#source_inp").val(data.source);
                 $("#vehicle_manufacturer_inp").val(data.vehicle_manufacturer);
                 $("#vehicle_model_inp").val(data.vehicle_model);
                 $("#traffic_structure_inp").val(data.traffic_structure);

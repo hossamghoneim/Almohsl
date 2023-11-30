@@ -19,8 +19,6 @@ class MatchedCarResource extends JsonResource
             "car_number" => $this->car_number,
             "username" => trim($this->username),
             "type" => $this->type,
-            "lat" => $this->lat,
-            "lng" => $this->lng,
             "district" => $this->district,
             "location" => $this->location,
             "url" => $this->url,

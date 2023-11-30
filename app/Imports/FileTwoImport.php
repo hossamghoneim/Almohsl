@@ -98,9 +98,7 @@ class FileTwoImport implements ToCollection
                     'employer' => $bigTracker->employer,
                     'type' => $miniTracker->type,
                     'location' => $miniTracker->location,
-                    'district' => $miniTracker->district ?? __('لا يوجد'),
-                    'lat' => $miniTracker->lat,
-                    'lng' => $miniTracker->lng,
+                    'district' => $miniTracker->district,
                     'url' => $miniTracker->url,
                 ]);
             }

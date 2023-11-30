@@ -59,16 +59,16 @@ class BigTrackerController extends Controller
      */
     public function destroy(string $id)
     {
-        $miniTracker = MiniTracker::findOrFail($id);
+        $bigTracker = BigTracker::findOrFail($id);
 
-        $miniTracker->delete();
+        $bigTracker->delete();
     }
 
     public function deleteSelected(Request $request)
     {
-        MiniTracker::whereIn('id', $request->selected_items_ids)->delete();
+        BigTracker::whereIn('id', $request->selected_items_ids)->delete();
         
-        return response(["selected mini trackers deleted successfully"]);
+        return response(["selected big trackers deleted successfully"]);
     }
 
     public function upload_excel_file(Request $request)

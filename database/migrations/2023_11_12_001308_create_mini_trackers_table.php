@@ -14,16 +14,14 @@ return new class extends Migration
         Schema::create('mini_trackers', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('car_number_id');
-            $table->string('type');
+            $table->string('type')->nullable();
             $table->string('location');
-            $table->double('lat')->nullable();
-            $table->double('lng')->nullable();
-            $table->string('district')->nullable();
+            $table->string('district');
             $table->string('url');
             $table->date('date');
 
             $table->foreign('car_number_id')->references('id')->on('car_numbers')->onDelete('cascade');
-            $table->unique(['car_number_id', 'lat', 'lng', 'date']);
+            $table->unique(['car_number_id', 'url', 'date']);
             $table->timestamps();
         });
     }

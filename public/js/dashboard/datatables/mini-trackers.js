@@ -25,8 +25,6 @@ var KTDatatablesServerSide = function () {
                 { data: 'car_number.number', name: 'car_number_id'},
                 { data: 'type' },
                 { data: 'location' },
-                { data: 'lat' },
-                { data: 'lng' },
                 { data: 'district' },
                 { data: 'url' },
                 { data: 'created_at' },
@@ -44,7 +42,14 @@ var KTDatatablesServerSide = function () {
                     }
                 },
                 {
-                    targets: 7,
+                    targets : 2,
+                    render: function(data)
+                    {
+                        return data ?? __('لا يوجد')
+                    }
+                },
+                {
+                    targets: 5,
                     render: function (data)
                     {
                         return `<a href="${data}" target="_blank">
@@ -128,8 +133,6 @@ var KTDatatablesServerSide = function () {
                 $("#car_number_inp").val(data.car_number.number);
                 $("#type_inp").val(data.type);
                 $("#location_inp").val(data.location);
-                $("#lat_inp").val(data.lat);
-                $("#lng_inp").val(data.lng);
                 $("#district_inp").val(data.district);
                 $("#url_inp").val(data.url);
                 $("#crud_form").attr('action', `/dashboard/${dbTable}/${data.id}`);

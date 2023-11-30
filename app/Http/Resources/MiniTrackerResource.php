@@ -20,8 +20,6 @@ class MiniTrackerResource extends JsonResource
             "type" => $this->type,
             "location" => $this->location,
             "district" => $this->district,
-            "lat" => $this->lat,
-            "lng" => $this->lng,
             "url" => $this->url,
             "date" => $this->date,
         ];
