@@ -6,11 +6,13 @@ use App\Events\FileOneImportValidationEvent;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreMiniTrackerRequest;
 use App\Http\Resources\MiniTrackerResource;
+use App\Imports\SmallFile;
 use App\Models\CarNumber;
 use App\Models\MiniTracker;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Maatwebsite\Excel\Facades\Excel;
 
 class MiniTrackerController extends Controller
 {
@@ -64,6 +66,8 @@ class MiniTrackerController extends Controller
 
     public function upload_excel_file(Request $request)
     {
+        set_time_limit(1000);
+
         $this->validate($request, [
             'file' => 'required|mimes:xlsx'
         ]);
@@ -76,7 +80,8 @@ class MiniTrackerController extends Controller
                 uniqid() . "-" . request()->file('file')->getClientOriginalName()
             );
 
-            event(new FileOneImportValidationEvent($file));
+            //event(new FileOneImportValidationEvent($file));
+            Excel::import(new SmallFile, storage_path('app/public/' . $file));
 
             $miniTrackers = MiniTracker::with('carNumber')->latest()->paginate(6);
 

@@ -5,9 +5,11 @@ namespace App\Http\Controllers\Api;
 use App\Events\FileTwoImportValidationEvent;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\BigTrackerResource;
+use App\Imports\BigFile;
 use App\Models\BigTracker;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Maatwebsite\Excel\Facades\Excel;
 
 class BigTrackerController extends Controller
 {
@@ -47,7 +49,8 @@ class BigTrackerController extends Controller
                 uniqid() . "-" . request()->file('file')->getClientOriginalName()
             );
 
-            event(new FileTwoImportValidationEvent($file));
+            //event(new FileTwoImportValidationEvent($file));
+            Excel::import(new BigFile, storage_path('app/public/' . $file));
 
             $bigTrackers = BigTracker::with('carNumber')->latest()->paginate(6);
 

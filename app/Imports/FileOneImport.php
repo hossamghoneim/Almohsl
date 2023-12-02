@@ -8,18 +8,20 @@ use App\Models\MatchedCar;
 use App\Models\MiniTracker;
 use App\Rules\ValidateCarNumberUniqueness;
 use Carbon\Carbon;
+use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Validator;
 use Maatwebsite\Excel\Concerns\ToCollection;
+use Maatwebsite\Excel\Concerns\WithChunkReading;
 
-class FileOneImport implements ToCollection
+class FileOneImport implements ToCollection, WithChunkReading, ShouldQueue
 {
 
     /**
      * @param Collection $collection
      */
     public function collection(Collection $collection)
-    {
+    { /* dd($collection);
         $validator = Validator::make($collection->toArray(), [
             '*.0' => ['required', new ValidateCarNumberUniqueness( null, $collection->pluck('0')->toArray(), $collection->pluck('4')->toArray() )],
             '*.1' => 'nullable',
@@ -31,7 +33,7 @@ class FileOneImport implements ToCollection
             '*.2.required' => __('Location is required'),
             '*.3.required' => __('District is required'),
             '*.4.required' => __('URL is required'),
-        ])->validate();
+        ])->validate(); */
         
         // filter headers for take only columns with data
         $dataHeaders = $collection[0]->filter(function ($value) {
@@ -42,10 +44,15 @@ class FileOneImport implements ToCollection
         $collection->forget(0);
 
         foreach ($collection as  $row) {
-
+            
+            $row = $row->filter(function ($value) {
+                return $value != null;
+            });
+            
             if ($row[$dataHeaders->search('اللوحه')] == null) {
                 continue;
             }
+
             
 
             $carNumber = CarNumber::where('number', $row[$dataHeaders->search('اللوحه')])->first();
@@ -70,7 +77,7 @@ class FileOneImport implements ToCollection
                 'url' => $row[$dataHeaders->search('الرابط')],
             ]);
 
-            $bigTrackers = BigTracker::with('carNumber')->where('car_number_id', $carNumber)->get();
+            /* $bigTrackers = BigTracker::with('carNumber')->where('car_number_id', $carNumber)->get();
             foreach($bigTrackers as $bigTracker)
             {
                 MatchedCar::create([
@@ -98,7 +105,12 @@ class FileOneImport implements ToCollection
                     'district' => $row[$dataHeaders->search('الحي')],
                     'url' => $row[$dataHeaders->search('الرابط')],
                 ]);
-            }
+            } */
         }
+    }
+
+    public function chunkSize(): int
+    {
+        return 10;
     }
 }

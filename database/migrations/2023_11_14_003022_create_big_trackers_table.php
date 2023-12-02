@@ -34,6 +34,7 @@ return new class extends Migration
             $table->string('employer');
 
             $table->foreign('car_number_id')->references('id')->on('car_numbers')->onDelete('cascade');
+            $table->unique(['car_number_id', 'vehicle_model']);
             $table->timestamps();
         });
     }

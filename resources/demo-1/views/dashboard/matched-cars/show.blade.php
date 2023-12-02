@@ -75,7 +75,7 @@
                                                 <div class="d-flex align-items-center">
                                                 <i class="ki-outline ki-phone fs-2 me-2"></i>{{ __('Url') }}</div>
                                             </td>
-                                            <td class="fw-bold text-end"><a href="{{ $matchedCar->url }}" target="_blank">{{ $matchedCar->url }}</a></td>
+                                            <td class="fw-bold text-end"><a href="{{ $matchedCar->url }}" style="color: @if($matchedCar->source == 1) {{ App\Enums\ColorsEnum::Black->value }} @elseif($matchedCar->source == 2) {{ App\Enums\ColorsEnum::ForestGreen->value }} @elseif($matchedCar->source == 3) {{ App\Enums\ColorsEnum::DarkGray->value }} @elseif($matchedCar->source == 4) {{ App\Enums\ColorsEnum::LightGray->value }} @elseif($matchedCar->source == 5) {{ App\Enums\ColorsEnum::NavyBlue->value }} @else {{ App\Enums\ColorsEnum::RoyalBlue->value }} @endif" target="_blank">{{ $matchedCar->url }}</a></td>
                                         </tr>
                                         <tr>
                                             <td class="text-muted">

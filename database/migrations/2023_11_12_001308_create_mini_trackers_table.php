@@ -17,6 +17,8 @@ return new class extends Migration
             $table->string('type')->nullable();
             $table->string('location');
             $table->string('district');
+            $table->double('lat')->nullable();
+            $table->double('lng')->nullable();
             $table->string('url');
             $table->date('date');
 
