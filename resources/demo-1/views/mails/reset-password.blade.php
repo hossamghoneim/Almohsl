@@ -206,7 +206,7 @@ table, td { color: #000000; } #u_body a { color: #e67e23; text-decoration: under
   <tr>
     <td style="padding-right: 0px;padding-left: 0px;" align="center">
       <a href="https://unlayer.com" target="_blank">
-        <img align="center" border="0" src="{{URL::asset('placeholder_images/output-onlinepngtools.png') }}" alt="Logo" title="Logo" style="outline: none;text-decoration: none;-ms-interpolation-mode: bicubic;clear: both;display: inline-block !important;border: none;height: auto;float: none;width: 20%;max-width: 150px;" width="150" class="v-src-width v-src-max-width"/>
+        <img align="center" border="0" src="{{URL::asset('placeholder_images/output-onlinepngtools.png') }}" alt="Logo" title="Logo" style="outline: none;text-decoration: none;-ms-interpolation-mode: bicubic;clear: both;display: inline-block !important;border: none;height: auto;float: none;width: 40%;max-width: 200;" width="200" class="v-src-width v-src-max-width"/>
       </a>
     </td>
   </tr>

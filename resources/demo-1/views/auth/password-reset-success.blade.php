@@ -40,20 +40,20 @@
 					<!--begin::Wrapper-->
 					<div class="pt-lg-10 mb-10">
 						<!--begin::Logo-->
-						<h1 class="fw-bolder fs-2qx text-gray-800 mb-7">Password is changed</h1>
+						<h1 class="fw-bolder fs-2qx text-gray-800 mb-7">تم تغيير كلمة المرور</h1>
 						<!--end::Logo-->
 						<!--begin::Message-->
-						<div class="fw-bold fs-3 text-muted mb-15">Your password is successfully changed. Please Sign
-						<br />in to your account and start a new project.</div>
+						<div class="fw-bold fs-3 text-muted mb-15">تم تغيير كلمة المرور الخاصة بك بنجاح. الرجاء تسجيل الدخول
+							أدخل إلى حسابك وابدأ مشروعًا جديدًا.</div>
 						<!--end::Message-->
 						<!--begin::Action-->
 						<div class="text-center">
-							<a href="{{ route('admin.login-form') }}" class="btn btn-primary btn-lg fw-bolder">Sign In</a>
+							<a href="{{ route('admin.login-form') }}" class="btn btn-primary btn-lg fw-bolder">سجل دخولك</a>
 						</div>
 						<!--end::Action-->
 						<!--begin::Action-->
-						<div class="text-gray-700 fw-bold fs-4 pt-7">Did’t receive an email?
-						<a href="{{ route('forget-password') }}" class="text-primary fw-bolder">Try Again</a></div>
+						<div class="text-gray-700 fw-bold fs-4 pt-7">لم تتلق بريدا إلكترونيا؟
+						<a href="{{ route('forget-password') }}" class="text-primary fw-bolder">حاول ثانية</a></div>
 						<!--end::Action-->
 					</div>
 					<!--end::Wrapper-->
