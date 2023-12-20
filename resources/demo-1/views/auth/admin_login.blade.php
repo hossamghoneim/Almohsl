@@ -96,6 +96,10 @@
                             </div>
                             <p class="invalid-feedback" id="password"></p>
                             <!--end::Input-->
+
+                            <!--begin::Link-->
+                            <a href="{{ route('forget-password') }}" class="link-primary fs-6 fw-bolder">نسيان كلمة السر ؟</a>
+                            <!--end::Link-->
                         </div>
                         <!--end::Input group-->
                         <!--begin::Actions-->
@@ -123,7 +127,7 @@
                         <!--begin::Links-->
                         <div class="d-flex align-items-center fw-bold fs-6">
                             <span class="text-muted text-hover-primary px-2">
-                                {{ __('Developed By') }}  <img class="mx-4" style="width: 50px; height: 50px" src="{{ asset('placeholder_images/logo.jpeg') }}"  >
+                                {{ __('Developed By') }}  <img class="mx-1" style="width: 100px; height: 100px" src="{{ asset('placeholder_images/output-onlinepngtools.png') }}"  >
                             </span>
                         </div>
                         <!--end::Links-->
