@@ -8,6 +8,7 @@ use App\Http\Requests\UpdateAdminRequest;
 use App\Http\Resources\AdminResource;
 use App\Models\Admin;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class AdminController extends Controller
 {
@@ -58,5 +59,38 @@ class AdminController extends Controller
         $admin->delete();
 
         return $this->success("Deleted successfully");
+    }
+
+    public function resetPassword(Request $request)
+    {
+        $request->validate([
+            'email' => "required|email:255|exists:admins,email",
+        ]);
+
+        $newPassword = $this->randomPassword();
+
+        Admin::where('email', $request->email)->first()->update([
+            'password' => $newPassword
+        ]);
+        
+        Mail::send('mails.reset-password',['newPassword' =>  $newPassword],function($message) use($request){
+            $message->to($request->email)->subject('reset password'); 
+        });
+
+        return response()->json([
+            'message' => 'Password was sent successfully',
+            'code' => 200,
+        ], 200);
+    }
+
+    function randomPassword() {
+        $alphabet = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890';
+        $pass = array(); //remember to declare $pass as an array
+        $alphaLength = strlen($alphabet) - 1; //put the length -1 in cache
+        for ($i = 0; $i < 8; $i++) {
+            $n = rand(0, $alphaLength);
+            $pass[] = $alphabet[$n];
+        }
+        return implode($pass); //turn the array into a string
     }
 }

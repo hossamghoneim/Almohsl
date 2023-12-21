@@ -20,6 +20,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::group(['middleware' => ['cors', 'json.response']], function () {
     Route::post('login', 'Auth\AuthController@login');
+    Route::post('change-password', 'AdminController@resetPassword');
     //Route::post('register','Auth\AuthController@register');
     //Route::post('change-password/{user:email}', 'Auth\ForgetPasswordController@changePassword');
 
