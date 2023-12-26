@@ -61,7 +61,7 @@ class SmallFile implements ToModel, WithHeadingRow, WithBatchInserts, WithChunkR
 
         return new MiniTracker([
             'car_number_id' => $carNumber,
-            'type' => $row['النوع'],
+            'type' => $row['النوع'] ?? null,
             'location' => $row['الموقع'],
             'district' => $row['الحي'],
             'date' => Carbon::now()->toDateString(),
