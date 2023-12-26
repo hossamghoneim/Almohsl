@@ -16,4 +16,9 @@ class CarNumber extends Model
     {
         return $this->hasMany(MiniTracker::class);
     }
+
+    public function bigTrackers()
+    {
+        return $this->hasMany(BigTracker::class);
+    }
 }

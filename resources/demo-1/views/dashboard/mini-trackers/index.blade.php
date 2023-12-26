@@ -26,6 +26,13 @@
                     </span>
                     <!--end::Svg Icon-->
                     <input type="text" data-kt-docs-table-filter="search" class="form-control form-control-solid w-250px ps-15" placeholder="{{ __('Search for data') }}">
+                    <select class="form-select form-select-solid w-200px ps-15 filter-input ms-2" data-filter-index="1" data-dir="@if(isArabic()) rtl @else ltr @endif" name="car_number_id" id="car_number_id_inp"
+                        data-control="select2" data-allow-clear="true" data-placeholder="{{ __('اختر رقم اللوحة') }}">
+                        <option></option>
+                        @foreach ($carNumbers as $carNumber)
+                            <option value="{{ $carNumber->id }}">{{ $carNumber->number }}</option>
+                        @endforeach
+                    </select>
                 </div>
                 <!--end::Search-->
                 <!--begin::Toolbar-->

@@ -24,8 +24,9 @@ class BigTrackerController extends Controller
             $data = getModelData( model: new BigTracker(), relations: ['carNumber' => ['id', 'number']]);
             return response()->json($data);
         }
+        $carNumbers = CarNumber::has('bigTrackers')->select('id', 'number')->get();
 
-        return view('dashboard.big-trackers.index');
+        return view('dashboard.big-trackers.index', compact('carNumbers'));
     }
 
     /**

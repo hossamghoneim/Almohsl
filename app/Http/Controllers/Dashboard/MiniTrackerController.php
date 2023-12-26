@@ -25,8 +25,8 @@ class MiniTrackerController extends Controller
             $data = getModelData( model: new MiniTracker(), relations: ['carNumber' => ['id', 'number']]);
             return response()->json($data);
         }
-
-        return view('dashboard.mini-trackers.index');
+        $carNumbers = CarNumber::has('miniTrackers')->select('id', 'number')->get();
+        return view('dashboard.mini-trackers.index', compact('carNumbers'));
     }
 
     /**
