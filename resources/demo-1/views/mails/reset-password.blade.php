@@ -206,7 +206,7 @@ table, td { color: #000000; } #u_body a { color: #e67e23; text-decoration: under
   <tr>
     <td style="padding-right: 0px;padding-left: 0px;" align="center">
       <a href="https://unlayer.com" target="_blank">
-        <img align="center" border="0" src="{{URL::asset('placeholder_images/output-onlinepngtools.png') }}" alt="Logo" title="Logo" style="outline: none;text-decoration: none;-ms-interpolation-mode: bicubic;clear: both;display: inline-block !important;border: none;height: auto;float: none;width: 40%;max-width: 200;" width="200" class="v-src-width v-src-max-width"/>
+        <img align="center" border="0" src="{{URL::asset('placeholder_images/logo_transparent.png') }}" alt="Logo" title="Logo" style="outline: none;text-decoration: none;-ms-interpolation-mode: bicubic;clear: both;display: inline-block !important;border: none;height: auto;float: none;width: 40%;max-width: 200;" width="200" class="v-src-width v-src-max-width"/>
       </a>
     </td>
   </tr>
@@ -316,7 +316,7 @@ table, td { color: #000000; } #u_body a { color: #e67e23; text-decoration: under
 
   <div style="font-size: 14px; color: #333333; line-height: 190%; text-align: left; word-wrap: break-word;">
     <p style="font-size: 14px; line-height: 190%;"><span style="font-size: 16px; line-height: 30.4px;">Sincerely,</span></p>
-<p style="font-size: 14px; line-height: 190%;"><span style="font-size: 16px; line-height: 30.4px;"><strong>[KhotWH]</strong></span></p>
+<p style="font-size: 14px; line-height: 190%;"><span style="font-size: 16px; line-height: 30.4px;"><strong>[Almohsl]</strong></span></p>
   </div>
 
       </td>
@@ -443,7 +443,7 @@ table, td { color: #000000; } #u_body a { color: #e67e23; text-decoration: under
       <td style="overflow-wrap:break-word;word-break:break-word;padding:10px 10px 20px;font-family:'Lato',sans-serif;" align="left">
 
   <div style="font-size: 14px; color: #8d8c8c; line-height: 190%; text-align: center; word-wrap: break-word;">
-    <p style="font-size: 14px; line-height: 190%;">If you have any questions, feel free message us at <span style="text-decoration: underline; font-size: 14px; line-height: 26.6px;"><span style="color: #f1602a; font-size: 14px; line-height: 26.6px; text-decoration: underline;"><span style="font-size: 14px; line-height: 26.6px;">support@KhotWH.com</span>. </span></span><br />All right reserved. Update email preferences or unsubscribe.<br />Giza, Egypt<br /><span style="text-decoration: underline; font-size: 14px; line-height: 26.6px;">Terms of use</span> | <span style="text-decoration: underline; font-size: 14px; line-height: 26.6px;">Privacy Policy</span></p>
+    <p style="font-size: 14px; line-height: 190%;">If you have any questions, feel free message us at <span style="text-decoration: underline; font-size: 14px; line-height: 26.6px;"><span style="color: #f1602a; font-size: 14px; line-height: 26.6px; text-decoration: underline;"><span style="font-size: 14px; line-height: 26.6px;">support@Almohsl.com</span>. </span></span><br />All right reserved. Update email preferences or unsubscribe.<br />Giza, Egypt<br /><span style="text-decoration: underline; font-size: 14px; line-height: 26.6px;">Terms of use</span> | <span style="text-decoration: underline; font-size: 14px; line-height: 26.6px;">Privacy Policy</span></p>
   </div>
 
       </td>

@@ -30,7 +30,7 @@
 					<tr>
 						<td align="center" valign="center" style="text-align:center; padding: 40px">
 							<a href="https://keenthemes.com" rel="noopener" target="_blank">
-								<img alt="Logo" src="{{ asset('placeholder_images/output-onlinepngtools.png') }}" width="250px" />
+								<img alt="Logo" src="{{ asset('placeholder_images/logo_transparent.png') }}" width="250px" />
 							</a>
 						</td>
 					</tr>
@@ -39,7 +39,7 @@
 							<div style="text-align:left; margin: 0 20px; padding: 40px; background-color:#ffffff; border-radius: 6px">
 								<!--begin:Email content-->
 								<div style="padding-bottom: 30px; font-size: 17px; direction: rtl">
-									<strong>مرحبًا بك في دعم KhotWH!</strong>
+									<strong>مرحبًا بك في دعم Almohsl!</strong>
 								</div>
 								<div style="padding-bottom: 30px">لإعادة تعيين كلمة المرور الخاصة بك، يرجى إدخال عنوان بريدك الإلكتروني أدناه للتحقق منه. بمجرد إدخالها، سيتم إرسال كلمة المرور الجديدة إليك.</div>
 								<form style="padding-bottom: 40px; text-align:center;" action="{{ route('reset-password') }}" method="POST" id="crud_form" class="ajax-form" data-redirection-url="{{ route('password-reset-success') }}">
@@ -56,11 +56,11 @@
 								<div style="padding-bottom: 30px">ستنتهي صلاحية رابط إعادة تعيين كلمة المرور خلال 60 دقيقة. إذا لم تطلب إعادة تعيين كلمة المرور، فلا يلزم اتخاذ أي إجراء آخر.</div>
 								<div style="border-bottom: 1px solid #eeeeee; margin: 15px 0"></div>
 								<div style="padding-bottom: 10px">أطيب التحيات,
-								<br>فريق KhotWH.
+								<br>فريق Almohsl.
 								<tr>
 									<td align="center" valign="center" style="font-size: 13px; text-align:center;padding: 20px; color: #6d6e7c;">
 										<p>Copyright ©
-										<a href="https://www.linkedin.com/in/hossam-ghoneim-794b061b7/" rel="noopener" target="_blank">KhotWH</a>.</p>
+										<a href="https://www.linkedin.com/in/hossam-ghoneim-794b061b7/" rel="noopener" target="_blank">Almohsl</a>.</p>
 									</td>
 								</tr></br></div>
 							</div>

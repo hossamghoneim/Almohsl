@@ -127,7 +127,7 @@
                         <!--begin::Links-->
                         <div class="d-flex align-items-center fw-bold fs-6">
                             <span class="text-muted text-hover-primary px-2">
-                                {{ __('Developed By') }}  <img class="mx-1" style="width: 100px; height: 100px" src="{{ asset('placeholder_images/output-onlinepngtools.png') }}"  >
+                                {{ __('Developed By') }}  <img class="mx-1" style="width: 100px; height: 100px" src="{{ asset('placeholder_images/logo_transparent.png') }}"  >
                             </span>
                         </div>
                         <!--end::Links-->

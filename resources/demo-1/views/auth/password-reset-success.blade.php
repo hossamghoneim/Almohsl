@@ -34,7 +34,7 @@
 				<div class="d-flex flex-column flex-column-fluid text-center p-10 py-lg-15">
 					<!--begin::Logo-->
 					<a href="https://www.linkedin.com/in/hossam-ghoneim-794b061b7/" class="mb-10 pt-lg-10">
-						<img alt="Logo" src="{{ asset('placeholder_images/output-onlinepngtools.png') }}" width="250px" />
+						<img alt="Logo" src="{{ asset('placeholder_images/logo_transparent.png') }}" width="250px" />
 					</a>
 					<!--end::Logo-->
 					<!--begin::Wrapper-->
