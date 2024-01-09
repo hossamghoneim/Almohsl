@@ -34,9 +34,7 @@ class BigFile implements ToModel, WithHeadingRow, WithBatchInserts, WithChunkRea
     { 
         $validator = Validator::make($row, [
             'المصدر' => ['required'],
-            'صانع المركبة' => ['required'],
-            'طراز المركبة' => ['required'],
-            'هيكل المرور' => ['required'],
+            'اللوحة' => ['required'],
         ])->validate();
 
         $row = array_filter($row);
@@ -78,7 +76,7 @@ class BigFile implements ToModel, WithHeadingRow, WithBatchInserts, WithChunkRea
             'installments_count' => $row['عدد الأقساط'],
             'late_days_count' => $row['أيام التاخير '],
             'city' => $row['المدينة'],
-            'employer' => $row['جهة العمل']
+            'employer' => $row['جهة العمل'] ?? null
         ]);
     }
 

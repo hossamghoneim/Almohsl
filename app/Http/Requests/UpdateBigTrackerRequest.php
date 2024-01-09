@@ -22,7 +22,8 @@ class UpdateBigTrackerRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'car_number' => 'required',
+            'source' => 'required'
         ];
     }
 }
